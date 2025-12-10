@@ -1,0 +1,426 @@
+   1               		.file	"radioGround.cpp"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.global	_Z9radioInitv
+  10               	_Z9radioInitv:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 84B1      		in r24,0x4
+  16 0002 8D62      		ori r24,lo8(45)
+  17 0004 84B9      		out 0x4,r24
+  18 0006 8CB5      		in r24,0x2c
+  19 0008 8065      		ori r24,lo8(80)
+  20 000a 8CBD      		out 0x2c,r24
+  21 000c 2A9A      		sbi 0x5,2
+  22 000e 2898      		cbi 0x5,0
+  23               	/* epilogue start */
+  24 0010 0895      		ret
+  26               	.global	_Z12writeReadSpih
+  28               	_Z12writeReadSpih:
+  29               	/* prologue: function */
+  30               	/* frame size = 0 */
+  31               	/* stack size = 0 */
+  32               	.L__stack_usage = 0
+  33 0012 8EBD      		out 0x2e,r24
+  34               	.L3:
+  35 0014 0DB4      		in __tmp_reg__,0x2d
+  36 0016 07FE      		sbrs __tmp_reg__,7
+  37 0018 00C0      		rjmp .L3
+  38 001a 8EB5      		in r24,0x2e
+  39               	/* epilogue start */
+  40 001c 0895      		ret
+  42               	.global	_Z14radio_read_bufhPhh
+  44               	_Z14radio_read_bufhPhh:
+  45 001e EF92      		push r14
+  46 0020 FF92      		push r15
+  47 0022 0F93      		push r16
+  48 0024 1F93      		push r17
+  49 0026 CF93      		push r28
+  50 0028 DF93      		push r29
+  51               	/* prologue: function */
+  52               	/* frame size = 0 */
+  53               	/* stack size = 6 */
+  54               	.L__stack_usage = 6
+  55 002a 7B01      		movw r14,r22
+  56 002c 142F      		mov r17,r20
+  57 002e 2A98      		cbi 0x5,2
+  58 0030 0E94 0000 		call _Z12writeReadSpih
+  59 0034 082F      		mov r16,r24
+  60 0036 E701      		movw r28,r14
+  61               	.L7:
+  62 0038 1150      		subi r17,1
+  63 003a 00F0      		brcs .L6
+  64 003c 8FEF      		ldi r24,lo8(-1)
+  65 003e 0E94 0000 		call _Z12writeReadSpih
+  66 0042 8993      		st Y+,r24
+  67 0044 00C0      		rjmp .L7
+  68               	.L6:
+  69 0046 2A9A      		sbi 0x5,2
+  70 0048 802F      		mov r24,r16
+  71               	/* epilogue start */
+  72 004a DF91      		pop r29
+  73 004c CF91      		pop r28
+  74 004e 1F91      		pop r17
+  75 0050 0F91      		pop r16
+  76 0052 FF90      		pop r15
+  77 0054 EF90      		pop r14
+  78 0056 0895      		ret
+  80               	.global	_Z15radio_write_bufhPhh
+  82               	_Z15radio_write_bufhPhh:
+  83 0058 EF92      		push r14
+  84 005a FF92      		push r15
+  85 005c 0F93      		push r16
+  86 005e 1F93      		push r17
+  87 0060 CF93      		push r28
+  88 0062 DF93      		push r29
+  89               	/* prologue: function */
+  90               	/* frame size = 0 */
+  91               	/* stack size = 6 */
+  92               	.L__stack_usage = 6
+  93 0064 7B01      		movw r14,r22
+  94 0066 142F      		mov r17,r20
+  95 0068 2A98      		cbi 0x5,2
+  96 006a 0E94 0000 		call _Z12writeReadSpih
+  97 006e 082F      		mov r16,r24
+  98 0070 E701      		movw r28,r14
+  99               	.L10:
+ 100 0072 1150      		subi r17,1
+ 101 0074 00F0      		brcs .L9
+ 102 0076 8991      		ld r24,Y+
+ 103 0078 0E94 0000 		call _Z12writeReadSpih
+ 104 007c 00C0      		rjmp .L10
+ 105               	.L9:
+ 106 007e 2A9A      		sbi 0x5,2
+ 107 0080 802F      		mov r24,r16
+ 108               	/* epilogue start */
+ 109 0082 DF91      		pop r29
+ 110 0084 CF91      		pop r28
+ 111 0086 1F91      		pop r17
+ 112 0088 0F91      		pop r16
+ 113 008a FF90      		pop r15
+ 114 008c EF90      		pop r14
+ 115 008e 0895      		ret
+ 117               	.global	_Z13radio_readregh
+ 119               	_Z13radio_readregh:
+ 120               	/* prologue: function */
+ 121               	/* frame size = 0 */
+ 122               	/* stack size = 0 */
+ 123               	.L__stack_usage = 0
+ 124 0090 2A98      		cbi 0x5,2
+ 125 0092 8F71      		andi r24,lo8(31)
+ 126 0094 0E94 0000 		call _Z12writeReadSpih
+ 127 0098 8FEF      		ldi r24,lo8(-1)
+ 128 009a 0E94 0000 		call _Z12writeReadSpih
+ 129 009e 2A9A      		sbi 0x5,2
+ 130               	/* epilogue start */
+ 131 00a0 0895      		ret
+ 133               	.global	_Z14radio_writereghh
+ 135               	_Z14radio_writereghh:
+ 136 00a2 CF93      		push r28
+ 137 00a4 DF93      		push r29
+ 138               	/* prologue: function */
+ 139               	/* frame size = 0 */
+ 140               	/* stack size = 2 */
+ 141               	.L__stack_usage = 2
+ 142 00a6 D62F      		mov r29,r22
+ 143 00a8 2A98      		cbi 0x5,2
+ 144 00aa 8F71      		andi r24,lo8(31)
+ 145 00ac 8062      		ori r24,lo8(32)
+ 146 00ae 0E94 0000 		call _Z12writeReadSpih
+ 147 00b2 C82F      		mov r28,r24
+ 148 00b4 8D2F      		mov r24,r29
+ 149 00b6 0E94 0000 		call _Z12writeReadSpih
+ 150 00ba 2A9A      		sbi 0x5,2
+ 151 00bc 8C2F      		mov r24,r28
+ 152               	/* epilogue start */
+ 153 00be DF91      		pop r29
+ 154 00c0 CF91      		pop r28
+ 155 00c2 0895      		ret
+ 157               	.global	_Z17radio_readreg_bufhPhh
+ 159               	_Z17radio_readreg_bufhPhh:
+ 160               	/* prologue: function */
+ 161               	/* frame size = 0 */
+ 162               	/* stack size = 0 */
+ 163               	.L__stack_usage = 0
+ 164 00c4 8F71      		andi r24,lo8(31)
+ 165 00c6 0C94 0000 		jmp _Z14radio_read_bufhPhh
+ 167               	.global	_Z18radio_writereg_bufhPhh
+ 169               	_Z18radio_writereg_bufhPhh:
+ 170               	/* prologue: function */
+ 171               	/* frame size = 0 */
+ 172               	/* stack size = 0 */
+ 173               	.L__stack_usage = 0
+ 174 00ca 8F71      		andi r24,lo8(31)
+ 175 00cc 8062      		ori r24,lo8(32)
+ 176 00ce 0C94 0000 		jmp _Z15radio_write_bufhPhh
+ 178               	.global	_Z9radio_cmdh
+ 180               	_Z9radio_cmdh:
+ 181               	/* prologue: function */
+ 182               	/* frame size = 0 */
+ 183               	/* stack size = 0 */
+ 184               	.L__stack_usage = 0
+ 185 00d2 2A98      		cbi 0x5,2
+ 186 00d4 0E94 0000 		call _Z12writeReadSpih
+ 187 00d8 2A9A      		sbi 0x5,2
+ 188               	/* epilogue start */
+ 189 00da 0895      		ret
+ 191               		.section	.rodata
+ 192               	.LC0:
+ 193 0000 E7        		.byte	-25
+ 194 0001 E7        		.byte	-25
+ 195 0002 E7        		.byte	-25
+ 196 0003 E7        		.byte	-25
+ 197 0004 E7        		.byte	-25
+ 198               	.LC1:
+ 199 0005 C2        		.byte	-62
+ 200 0006 C2        		.byte	-62
+ 201 0007 C2        		.byte	-62
+ 202 0008 C2        		.byte	-62
+ 203 0009 C2        		.byte	-62
+ 204               		.text
+ 205               	.global	_Z14radioModulInitv
+ 207               	_Z14radioModulInitv:
+ 208 00dc CF93      		push r28
+ 209 00de DF93      		push r29
+ 210 00e0 CDB7      		in r28,__SP_L__
+ 211 00e2 DEB7      		in r29,__SP_H__
+ 212 00e4 2A97      		sbiw r28,10
+ 213 00e6 0FB6      		in __tmp_reg__,__SREG__
+ 214 00e8 F894      		cli
+ 215 00ea DEBF      		out __SP_H__,r29
+ 216 00ec 0FBE      		out __SREG__,__tmp_reg__
+ 217 00ee CDBF      		out __SP_L__,r28
+ 218               	/* prologue: function */
+ 219               	/* frame size = 10 */
+ 220               	/* stack size = 12 */
+ 221               	.L__stack_usage = 12
+ 222 00f0 0E94 0000 		call _Z9radioInitv
+ 223 00f4 0E94 0000 		call _Z9UART_Initv
+ 224 00f8 85E0      		ldi r24,lo8(5)
+ 225 00fa E0E0      		ldi r30,lo8(.LC0)
+ 226 00fc F0E0      		ldi r31,hi8(.LC0)
+ 227 00fe DE01      		movw r26,r28
+ 228 0100 1696      		adiw r26,6
+ 229               		0:
+ 230 0102 0190      		ld r0,Z+
+ 231 0104 0D92      		st X+,r0
+ 232 0106 8A95      		dec r24
+ 233 0108 01F4      		brne 0b
+ 234 010a 85E0      		ldi r24,lo8(5)
+ 235 010c E0E0      		ldi r30,lo8(.LC1)
+ 236 010e F0E0      		ldi r31,hi8(.LC1)
+ 237 0110 DE01      		movw r26,r28
+ 238 0112 1196      		adiw r26,1
+ 239               		0:
+ 240 0114 0190      		ld r0,Z+
+ 241 0116 0D92      		st X+,r0
+ 242 0118 8A95      		dec r24
+ 243 011a 01F4      		brne 0b
+ 244 011c 62E0      		ldi r22,lo8(2)
+ 245 011e 81E0      		ldi r24,lo8(1)
+ 246 0120 0E94 0000 		call _Z14radio_writereghh
+ 247 0124 63E0      		ldi r22,lo8(3)
+ 248 0126 82E0      		ldi r24,lo8(2)
+ 249 0128 0E94 0000 		call _Z14radio_writereghh
+ 250 012c 63E0      		ldi r22,lo8(3)
+ 251 012e 83E0      		ldi r24,lo8(3)
+ 252 0130 0E94 0000 		call _Z14radio_writereghh
+ 253 0134 61E0      		ldi r22,lo8(1)
+ 254 0136 84E0      		ldi r24,lo8(4)
+ 255 0138 0E94 0000 		call _Z14radio_writereghh
+ 256 013c 63E0      		ldi r22,lo8(3)
+ 257 013e 85E0      		ldi r24,lo8(5)
+ 258 0140 0E94 0000 		call _Z14radio_writereghh
+ 259 0144 66E0      		ldi r22,lo8(6)
+ 260 0146 86E0      		ldi r24,lo8(6)
+ 261 0148 0E94 0000 		call _Z14radio_writereghh
+ 262 014c 45E0      		ldi r20,lo8(5)
+ 263 014e BE01      		movw r22,r28
+ 264 0150 6A5F      		subi r22,-6
+ 265 0152 7F4F      		sbci r23,-1
+ 266 0154 8AE0      		ldi r24,lo8(10)
+ 267 0156 0E94 0000 		call _Z18radio_writereg_bufhPhh
+ 268 015a 45E0      		ldi r20,lo8(5)
+ 269 015c BE01      		movw r22,r28
+ 270 015e 6A5F      		subi r22,-6
+ 271 0160 7F4F      		sbci r23,-1
+ 272 0162 80E1      		ldi r24,lo8(16)
+ 273 0164 0E94 0000 		call _Z18radio_writereg_bufhPhh
+ 274 0168 45E0      		ldi r20,lo8(5)
+ 275 016a BE01      		movw r22,r28
+ 276 016c 6F5F      		subi r22,-1
+ 277 016e 7F4F      		sbci r23,-1
+ 278 0170 8BE0      		ldi r24,lo8(11)
+ 279 0172 0E94 0000 		call _Z18radio_writereg_bufhPhh
+ 280 0176 68E0      		ldi r22,lo8(8)
+ 281 0178 81E1      		ldi r24,lo8(17)
+ 282 017a 0E94 0000 		call _Z14radio_writereghh
+ 283 017e 68E0      		ldi r22,lo8(8)
+ 284 0180 82E1      		ldi r24,lo8(18)
+ 285 0182 0E94 0000 		call _Z14radio_writereghh
+ 286 0186 63E0      		ldi r22,lo8(3)
+ 287 0188 8CE1      		ldi r24,lo8(28)
+ 288 018a 0E94 0000 		call _Z14radio_writereghh
+ 289 018e 65E0      		ldi r22,lo8(5)
+ 290 0190 8DE1      		ldi r24,lo8(29)
+ 291 0192 0E94 0000 		call _Z14radio_writereghh
+ 292 0196 6FE0      		ldi r22,lo8(15)
+ 293 0198 80E0      		ldi r24,0
+ 294 019a 0E94 0000 		call _Z14radio_writereghh
+ 295               	/* epilogue start */
+ 296 019e 2A96      		adiw r28,10
+ 297 01a0 0FB6      		in __tmp_reg__,__SREG__
+ 298 01a2 F894      		cli
+ 299 01a4 DEBF      		out __SP_H__,r29
+ 300 01a6 0FBE      		out __SREG__,__tmp_reg__
+ 301 01a8 CDBF      		out __SP_L__,r28
+ 302 01aa DF91      		pop r29
+ 303 01ac CF91      		pop r28
+ 304 01ae 0895      		ret
+ 306               	.global	_Z8transmitPhh
+ 308               	_Z8transmitPhh:
+ 309 01b0 1F93      		push r17
+ 310 01b2 CF93      		push r28
+ 311 01b4 DF93      		push r29
+ 312               	/* prologue: function */
+ 313               	/* frame size = 0 */
+ 314               	/* stack size = 3 */
+ 315               	.L__stack_usage = 3
+ 316 01b6 EC01      		movw r28,r24
+ 317 01b8 162F      		mov r17,r22
+ 318 01ba 80E0      		ldi r24,0
+ 319 01bc 0E94 0000 		call _Z13radio_readregh
+ 320 01c0 682F      		mov r22,r24
+ 321 01c2 6E7F      		andi r22,lo8(-2)
+ 322 01c4 80E0      		ldi r24,0
+ 323 01c6 0E94 0000 		call _Z14radio_writereghh
+ 324 01ca 8FEC      		ldi r24,lo8(1999)
+ 325 01cc 97E0      		ldi r25,hi8(1999)
+ 326 01ce 0197      	1:	sbiw r24,1
+ 327 01d0 01F4      		brne 1b
+ 328 01d2 00C0      		rjmp .
+ 329 01d4 0000      		nop
+ 330 01d6 81EE      		ldi r24,lo8(-31)
+ 331 01d8 0E94 0000 		call _Z9radio_cmdh
+ 332 01dc 412F      		mov r20,r17
+ 333 01de BE01      		movw r22,r28
+ 334 01e0 80EA      		ldi r24,lo8(-96)
+ 335 01e2 0E94 0000 		call _Z15radio_write_bufhPhh
+ 336 01e6 289A      		sbi 0x5,0
+ 337 01e8 8FE9      		ldi r24,lo8(3999)
+ 338 01ea 9FE0      		ldi r25,hi8(3999)
+ 339 01ec 0197      	1:	sbiw r24,1
+ 340 01ee 01F4      		brne 1b
+ 341 01f0 00C0      		rjmp .
+ 342 01f2 0000      		nop
+ 343 01f4 2898      		cbi 0x5,0
+ 344 01f6 87E0      		ldi r24,lo8(7)
+ 345 01f8 0E94 0000 		call _Z13radio_readregh
+ 346 01fc 805D      		subi r24,lo8(-(48))
+ 347 01fe 0E94 0000 		call _Z13UART_Transmith
+ 348 0202 8FE3      		ldi r24,lo8(-25537)
+ 349 0204 9CE9      		ldi r25,hi8(-25537)
+ 350 0206 0197      	1:	sbiw r24,1
+ 351 0208 01F4      		brne 1b
+ 352 020a 00C0      		rjmp .
+ 353 020c 0000      		nop
+ 354 020e 8FEF      		ldi r24,lo8(-1)
+ 355 0210 0E94 0000 		call _Z9radio_cmdh
+ 356 0214 682F      		mov r22,r24
+ 357 0216 87E0      		ldi r24,lo8(7)
+ 358               	/* epilogue start */
+ 359 0218 DF91      		pop r29
+ 360 021a CF91      		pop r28
+ 361 021c 1F91      		pop r17
+ 362 021e 0C94 0000 		jmp _Z14radio_writereghh
+ 364               	.global	_Z7receiveh
+ 366               	_Z7receiveh:
+ 367 0222 CF93      		push r28
+ 368               	/* prologue: function */
+ 369               	/* frame size = 0 */
+ 370               	/* stack size = 1 */
+ 371               	.L__stack_usage = 1
+ 372 0224 C82F      		mov r28,r24
+ 373 0226 80E0      		ldi r24,0
+ 374 0228 0E94 0000 		call _Z13radio_readregh
+ 375 022c 682F      		mov r22,r24
+ 376 022e 6160      		ori r22,lo8(1)
+ 377 0230 80E0      		ldi r24,0
+ 378 0232 0E94 0000 		call _Z14radio_writereghh
+ 379 0236 8FE3      		ldi r24,lo8(7999)
+ 380 0238 9FE1      		ldi r25,hi8(7999)
+ 381 023a 0197      	1:	sbiw r24,1
+ 382 023c 01F4      		brne 1b
+ 383 023e 00C0      		rjmp .
+ 384 0240 0000      		nop
+ 385 0242 289A      		sbi 0x5,0
+ 386               	.L19:
+ 387 0244 87E0      		ldi r24,lo8(7)
+ 388 0246 0E94 0000 		call _Z13radio_readregh
+ 389 024a 86FF      		sbrs r24,6
+ 390 024c 00C0      		rjmp .L19
+ 391 024e 8FE9      		ldi r24,lo8(3999)
+ 392 0250 9FE0      		ldi r25,hi8(3999)
+ 393 0252 0197      	1:	sbiw r24,1
+ 394 0254 01F4      		brne 1b
+ 395 0256 00C0      		rjmp .
+ 396 0258 0000      		nop
+ 397 025a 2898      		cbi 0x5,0
+ 398 025c 4C2F      		mov r20,r28
+ 399 025e 60E0      		ldi r22,lo8(_ZZ7receivehE4data)
+ 400 0260 70E0      		ldi r23,hi8(_ZZ7receivehE4data)
+ 401 0262 81E6      		ldi r24,lo8(97)
+ 402 0264 0E94 0000 		call _Z14radio_read_bufhPhh
+ 403 0268 8FEF      		ldi r24,lo8(-1)
+ 404 026a 0E94 0000 		call _Z9radio_cmdh
+ 405 026e 682F      		mov r22,r24
+ 406 0270 87E0      		ldi r24,lo8(7)
+ 407 0272 0E94 0000 		call _Z14radio_writereghh
+ 408 0276 8FEC      		ldi r24,lo8(1999)
+ 409 0278 97E0      		ldi r25,hi8(1999)
+ 410 027a 0197      	1:	sbiw r24,1
+ 411 027c 01F4      		brne 1b
+ 412 027e 00C0      		rjmp .
+ 413 0280 0000      		nop
+ 414 0282 80E0      		ldi r24,lo8(_ZZ7receivehE4data)
+ 415 0284 90E0      		ldi r25,hi8(_ZZ7receivehE4data)
+ 416               	/* epilogue start */
+ 417 0286 CF91      		pop r28
+ 418 0288 0895      		ret
+ 420               		.local	_ZZ7receivehE4data
+ 421               		.comm	_ZZ7receivehE4data,8,1
+ 422               		.ident	"GCC: (GNU) 7.3.0"
+ 423               	.global __do_copy_data
+ 424               	.global __do_clear_bss
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 radioGround.cpp
+     /tmp/cc1MQ0bK.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc1MQ0bK.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc1MQ0bK.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc1MQ0bK.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc1MQ0bK.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc1MQ0bK.s:10     .text:0000000000000000 _Z9radioInitv
+     /tmp/cc1MQ0bK.s:28     .text:0000000000000012 _Z12writeReadSpih
+     /tmp/cc1MQ0bK.s:44     .text:000000000000001e _Z14radio_read_bufhPhh
+     /tmp/cc1MQ0bK.s:82     .text:0000000000000058 _Z15radio_write_bufhPhh
+     /tmp/cc1MQ0bK.s:119    .text:0000000000000090 _Z13radio_readregh
+     /tmp/cc1MQ0bK.s:135    .text:00000000000000a2 _Z14radio_writereghh
+     /tmp/cc1MQ0bK.s:159    .text:00000000000000c4 _Z17radio_readreg_bufhPhh
+     /tmp/cc1MQ0bK.s:169    .text:00000000000000ca _Z18radio_writereg_bufhPhh
+     /tmp/cc1MQ0bK.s:180    .text:00000000000000d2 _Z9radio_cmdh
+     /tmp/cc1MQ0bK.s:207    .text:00000000000000dc _Z14radioModulInitv
+     /tmp/cc1MQ0bK.s:308    .text:00000000000001b0 _Z8transmitPhh
+     /tmp/cc1MQ0bK.s:366    .text:0000000000000222 _Z7receiveh
+                             .bss:0000000000000000 _ZZ7receivehE4data
+
+UNDEFINED SYMBOLS
+_Z9UART_Initv
+_Z13UART_Transmith
+__do_copy_data
+__do_clear_bss
