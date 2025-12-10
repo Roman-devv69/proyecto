@@ -1,0 +1,546 @@
+   1               		.file	"main.cpp"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.global	_Z10MOTOR_initv
+  10               	_Z10MOTOR_initv:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 8AB1      		in r24,0xa
+  16 0002 8066      		ori r24,lo8(96)
+  17 0004 8AB9      		out 0xa,r24
+  18 0006 83EA      		ldi r24,lo8(-93)
+  19 0008 84BD      		out 0x24,r24
+  20 000a 83E0      		ldi r24,lo8(3)
+  21 000c 85BD      		out 0x25,r24
+  22               	/* epilogue start */
+  23 000e 0895      		ret
+  25               	.global	_Z12MOTOR_deletev
+  27               	_Z12MOTOR_deletev:
+  28               	/* prologue: function */
+  29               	/* frame size = 0 */
+  30               	/* stack size = 0 */
+  31               	.L__stack_usage = 0
+  32 0010 8AB1      		in r24,0xa
+  33 0012 8F79      		andi r24,lo8(-97)
+  34 0014 8AB9      		out 0xa,r24
+  35 0016 14BC      		out 0x24,__zero_reg__
+  36 0018 15BC      		out 0x25,__zero_reg__
+  37               	/* epilogue start */
+  38 001a 0895      		ret
+  40               	.global	_Z10SERVO_initv
+  42               	_Z10SERVO_initv:
+  43               	/* prologue: function */
+  44               	/* frame size = 0 */
+  45               	/* stack size = 0 */
+  46               	.L__stack_usage = 0
+  47 001c 219A      		sbi 0x4,1
+  48 001e 82E8      		ldi r24,lo8(-126)
+  49 0020 8093 8000 		sts 128,r24
+  50 0024 8AE1      		ldi r24,lo8(26)
+  51 0026 8093 8100 		sts 129,r24
+  52 002a 8FE3      		ldi r24,lo8(63)
+  53 002c 9CE9      		ldi r25,lo8(-100)
+  54 002e 9093 8700 		sts 134+1,r25
+  55 0032 8093 8600 		sts 134,r24
+  56               	/* epilogue start */
+  57 0036 0895      		ret
+  59               	.global	_Z12SERVO_deletev
+  61               	_Z12SERVO_deletev:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	/* stack size = 0 */
+  65               	.L__stack_usage = 0
+  66 0038 2198      		cbi 0x4,1
+  67 003a 1092 8000 		sts 128,__zero_reg__
+  68 003e 1092 8100 		sts 129,__zero_reg__
+  69 0042 1092 8700 		sts 134+1,__zero_reg__
+  70 0046 1092 8600 		sts 134,__zero_reg__
+  71               	/* epilogue start */
+  72 004a 0895      		ret
+  74               	.global	_Z6powerRh
+  76               	_Z6powerRh:
+  77               	/* prologue: function */
+  78               	/* frame size = 0 */
+  79               	/* stack size = 0 */
+  80               	.L__stack_usage = 0
+  81 004c 87BD      		out 0x27,r24
+  82               	/* epilogue start */
+  83 004e 0895      		ret
+  85               	.global	_Z6powerLh
+  87               	_Z6powerLh:
+  88               	/* prologue: function */
+  89               	/* frame size = 0 */
+  90               	/* stack size = 0 */
+  91               	.L__stack_usage = 0
+  92 0050 88BD      		out 0x28,r24
+  93               	/* epilogue start */
+  94 0052 0895      		ret
+  96               	.global	_Z5servoh
+  98               	_Z5servoh:
+  99 0054 CF93      		push r28
+ 100 0056 DF93      		push r29
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	/* stack size = 2 */
+ 104               	.L__stack_usage = 2
+ 105 0058 C82F      		mov r28,r24
+ 106 005a 18BC      		out 0x28,__zero_reg__
+ 107 005c 17BC      		out 0x27,__zero_reg__
+ 108 005e 2FEF      		ldi r18,lo8(95999)
+ 109 0060 86E7      		ldi r24,hi8(95999)
+ 110 0062 91E0      		ldi r25,hlo8(95999)
+ 111 0064 2150      	1:	subi r18,1
+ 112 0066 8040      		sbci r24,0
+ 113 0068 9040      		sbci r25,0
+ 114 006a 01F4      		brne 1b
+ 115 006c 00C0      		rjmp .
+ 116 006e 0000      		nop
+ 117 0070 0E94 0000 		call _Z10SERVO_initv
+ 118 0074 5A9A      		sbi 0xb,2
+ 119 0076 D0E0      		ldi r29,0
+ 120 0078 45E8      		ldi r20,lo8(-123)
+ 121 007a 57E0      		ldi r21,lo8(7)
+ 122 007c C49F      		mul r28,r20
+ 123 007e 9001      		movw r18,r0
+ 124 0080 C59F      		mul r28,r21
+ 125 0082 300D      		add r19,r0
+ 126 0084 D49F      		mul r29,r20
+ 127 0086 300D      		add r19,r0
+ 128 0088 1124      		clr r1
+ 129 008a 2E5A      		subi r18,-82
+ 130 008c 3C4F      		sbci r19,-4
+ 131 008e E8E8      		ldi r30,lo8(-120)
+ 132 0090 F0E0      		ldi r31,0
+ 133 0092 3183      		std Z+1,r19
+ 134 0094 2083      		st Z,r18
+ 135 0096 2FEF      		ldi r18,lo8(1599999)
+ 136 0098 89E6      		ldi r24,hi8(1599999)
+ 137 009a 98E1      		ldi r25,hlo8(1599999)
+ 138 009c 2150      	1:	subi r18,1
+ 139 009e 8040      		sbci r24,0
+ 140 00a0 9040      		sbci r25,0
+ 141 00a2 01F4      		brne 1b
+ 142 00a4 00C0      		rjmp .
+ 143 00a6 0000      		nop
+ 144 00a8 5A98      		cbi 0xb,2
+ 145 00aa 5B9A      		sbi 0xb,3
+ 146 00ac 22E0      		ldi r18,lo8(2)
+ 147 00ae 30E0      		ldi r19,0
+ 148 00b0 2C1B      		sub r18,r28
+ 149 00b2 3D0B      		sbc r19,r29
+ 150 00b4 249F      		mul r18,r20
+ 151 00b6 C001      		movw r24,r0
+ 152 00b8 259F      		mul r18,r21
+ 153 00ba 900D      		add r25,r0
+ 154 00bc 349F      		mul r19,r20
+ 155 00be 900D      		add r25,r0
+ 156 00c0 1124      		clr r1
+ 157 00c2 8E5A      		subi r24,-82
+ 158 00c4 9C4F      		sbci r25,-4
+ 159 00c6 9183      		std Z+1,r25
+ 160 00c8 8083      		st Z,r24
+ 161 00ca 2FEF      		ldi r18,lo8(1599999)
+ 162 00cc 89E6      		ldi r24,hi8(1599999)
+ 163 00ce 98E1      		ldi r25,hlo8(1599999)
+ 164 00d0 2150      	1:	subi r18,1
+ 165 00d2 8040      		sbci r24,0
+ 166 00d4 9040      		sbci r25,0
+ 167 00d6 01F4      		brne 1b
+ 168 00d8 00C0      		rjmp .
+ 169 00da 0000      		nop
+ 170 00dc 5B98      		cbi 0xb,3
+ 171 00de 0E94 0000 		call _Z12SERVO_deletev
+ 172 00e2 0E94 0000 		call _Z14radioModulInitv
+ 173 00e6 8FE3      		ldi r24,lo8(-25537)
+ 174 00e8 9CE9      		ldi r25,hi8(-25537)
+ 175 00ea 0197      	1:	sbiw r24,1
+ 176 00ec 01F4      		brne 1b
+ 177 00ee 00C0      		rjmp .
+ 178 00f0 0000      		nop
+ 179               	/* epilogue start */
+ 180 00f2 DF91      		pop r29
+ 181 00f4 CF91      		pop r28
+ 182 00f6 0895      		ret
+ 184               	.global	_Z13check_commandP5PowerP12callibration
+ 186               	_Z13check_commandP5PowerP12callibration:
+ 187 00f8 AF92      		push r10
+ 188 00fa BF92      		push r11
+ 189 00fc CF92      		push r12
+ 190 00fe DF92      		push r13
+ 191 0100 EF92      		push r14
+ 192 0102 FF92      		push r15
+ 193 0104 0F93      		push r16
+ 194 0106 1F93      		push r17
+ 195 0108 CF93      		push r28
+ 196 010a DF93      		push r29
+ 197 010c CDB7      		in r28,__SP_L__
+ 198 010e DEB7      		in r29,__SP_H__
+ 199 0110 6497      		sbiw r28,20
+ 200 0112 0FB6      		in __tmp_reg__,__SREG__
+ 201 0114 F894      		cli
+ 202 0116 DEBF      		out __SP_H__,r29
+ 203 0118 0FBE      		out __SREG__,__tmp_reg__
+ 204 011a CDBF      		out __SP_L__,r28
+ 205               	/* prologue: function */
+ 206               	/* frame size = 20 */
+ 207               	/* stack size = 30 */
+ 208               	.L__stack_usage = 30
+ 209 011c 8C01      		movw r16,r24
+ 210 011e 6B01      		movw r12,r22
+ 211 0120 81E0      		ldi r24,lo8(1)
+ 212 0122 0E94 0000 		call _Z7receiveh
+ 213 0126 FC01      		movw r30,r24
+ 214 0128 F080      		ld r15,Z
+ 215 012a 8F2D      		mov r24,r15
+ 216 012c 0E94 0000 		call _Z13UART_Transmith
+ 217 0130 F7E7      		ldi r31,lo8(119)
+ 218 0132 FF12      		cpse r15,r31
+ 219 0134 00C0      		rjmp .L9
+ 220 0136 F801      		movw r30,r16
+ 221 0138 8081      		ld r24,Z
+ 222 013a 8C3C      		cpi r24,lo8(-52)
+ 223 013c 00F4      		brsh .L10
+ 224 013e 8D5C      		subi r24,lo8(-(51))
+ 225               	.L41:
+ 226 0140 8083      		st Z,r24
+ 227               	.L11:
+ 228 0142 F801      		movw r30,r16
+ 229 0144 9381      		ldd r25,Z+3
+ 230 0146 8081      		ld r24,Z
+ 231 0148 9E36      		cpi r25,lo8(110)
+ 232 014a 01F0      		breq .+2
+ 233 014c 00C0      		rjmp .L29
+ 234 014e 8183      		std Z+1,r24
+ 235               	.L44:
+ 236 0150 8283      		std Z+2,r24
+ 237               	.L30:
+ 238 0152 F801      		movw r30,r16
+ 239 0154 8181      		ldd r24,Z+1
+ 240 0156 88BD      		out 0x28,r24
+ 241 0158 8281      		ldd r24,Z+2
+ 242 015a 87BD      		out 0x27,r24
+ 243               	/* epilogue start */
+ 244 015c 6496      		adiw r28,20
+ 245 015e 0FB6      		in __tmp_reg__,__SREG__
+ 246 0160 F894      		cli
+ 247 0162 DEBF      		out __SP_H__,r29
+ 248 0164 0FBE      		out __SREG__,__tmp_reg__
+ 249 0166 CDBF      		out __SP_L__,r28
+ 250 0168 DF91      		pop r29
+ 251 016a CF91      		pop r28
+ 252 016c 1F91      		pop r17
+ 253 016e 0F91      		pop r16
+ 254 0170 FF90      		pop r15
+ 255 0172 EF90      		pop r14
+ 256 0174 DF90      		pop r13
+ 257 0176 CF90      		pop r12
+ 258 0178 BF90      		pop r11
+ 259 017a AF90      		pop r10
+ 260 017c 0895      		ret
+ 261               	.L10:
+ 262 017e 8FEF      		ldi r24,lo8(-1)
+ 263 0180 00C0      		rjmp .L41
+ 264               	.L9:
+ 265 0182 F3E7      		ldi r31,lo8(115)
+ 266 0184 FF12      		cpse r15,r31
+ 267 0186 00C0      		rjmp .L12
+ 268 0188 F801      		movw r30,r16
+ 269 018a 8081      		ld r24,Z
+ 270 018c 8433      		cpi r24,lo8(52)
+ 271 018e 00F0      		brlo .L13
+ 272 0190 8353      		subi r24,lo8(-(-51))
+ 273 0192 00C0      		rjmp .L41
+ 274               	.L13:
+ 275 0194 1082      		st Z,__zero_reg__
+ 276 0196 00C0      		rjmp .L11
+ 277               	.L12:
+ 278 0198 F5E7      		ldi r31,lo8(117)
+ 279 019a FF12      		cpse r15,r31
+ 280 019c 00C0      		rjmp .L14
+ 281 019e F801      		movw r30,r16
+ 282 01a0 8481      		ldd r24,Z+4
+ 283 01a2 8111      		cpse r24,__zero_reg__
+ 284 01a4 00C0      		rjmp .L15
+ 285 01a6 81E0      		ldi r24,lo8(1)
+ 286               	.L40:
+ 287 01a8 8483      		std Z+4,r24
+ 288               	.L45:
+ 289 01aa F801      		movw r30,r16
+ 290 01ac 8481      		ldd r24,Z+4
+ 291               	.L42:
+ 292 01ae 0E94 0000 		call _Z5servoh
+ 293 01b2 00C0      		rjmp .L11
+ 294               	.L15:
+ 295 01b4 82E0      		ldi r24,lo8(2)
+ 296 01b6 00C0      		rjmp .L40
+ 297               	.L14:
+ 298 01b8 F4E6      		ldi r31,lo8(100)
+ 299 01ba FF12      		cpse r15,r31
+ 300 01bc 00C0      		rjmp .L17
+ 301 01be F801      		movw r30,r16
+ 302 01c0 8481      		ldd r24,Z+4
+ 303 01c2 8230      		cpi r24,lo8(2)
+ 304 01c4 00F0      		brlo .L18
+ 305 01c6 8150      		subi r24,lo8(-(-1))
+ 306 01c8 00C0      		rjmp .L40
+ 307               	.L18:
+ 308 01ca 1482      		std Z+4,__zero_reg__
+ 309 01cc 00C0      		rjmp .L45
+ 310               	.L17:
+ 311 01ce FCE6      		ldi r31,lo8(108)
+ 312 01d0 FF12      		cpse r15,r31
+ 313 01d2 00C0      		rjmp .L20
+ 314 01d4 F801      		movw r30,r16
+ 315 01d6 8381      		ldd r24,Z+3
+ 316 01d8 8237      		cpi r24,lo8(114)
+ 317 01da 01F4      		brne .L43
+ 318               	.L23:
+ 319 01dc 8EE6      		ldi r24,lo8(110)
+ 320 01de F801      		movw r30,r16
+ 321 01e0 8383      		std Z+3,r24
+ 322 01e2 00C0      		rjmp .L11
+ 323               	.L20:
+ 324 01e4 F2E7      		ldi r31,lo8(114)
+ 325 01e6 FF12      		cpse r15,r31
+ 326 01e8 00C0      		rjmp .L22
+ 327 01ea F801      		movw r30,r16
+ 328 01ec 8381      		ldd r24,Z+3
+ 329 01ee 8C36      		cpi r24,lo8(108)
+ 330 01f0 01F0      		breq .L23
+ 331               	.L43:
+ 332 01f2 F382      		std Z+3,r15
+ 333 01f4 00C0      		rjmp .L11
+ 334               	.L22:
+ 335 01f6 F1E7      		ldi r31,lo8(113)
+ 336 01f8 FF16      		cp r15,r31
+ 337 01fa 01F0      		breq .L24
+ 338 01fc 8FE6      		ldi r24,lo8(111)
+ 339 01fe F812      		cpse r15,r24
+ 340 0200 00C0      		rjmp .L25
+ 341               	.L24:
+ 342 0202 F801      		movw r30,r16
+ 343 0204 1082      		st Z,__zero_reg__
+ 344 0206 81E0      		ldi r24,lo8(1)
+ 345 0208 8483      		std Z+4,r24
+ 346 020a 8EE6      		ldi r24,lo8(110)
+ 347 020c 8383      		std Z+3,r24
+ 348 020e 81E0      		ldi r24,lo8(1)
+ 349 0210 00C0      		rjmp .L42
+ 350               	.L25:
+ 351 0212 F7E6      		ldi r31,lo8(103)
+ 352 0214 FF12      		cpse r15,r31
+ 353 0216 00C0      		rjmp .L26
+ 354 0218 8FEF      		ldi r24,lo8(-1)
+ 355 021a F801      		movw r30,r16
+ 356 021c 8083      		st Z,r24
+ 357 021e 1482      		std Z+4,__zero_reg__
+ 358 0220 8EE6      		ldi r24,lo8(110)
+ 359 0222 8383      		std Z+3,r24
+ 360 0224 80E0      		ldi r24,0
+ 361 0226 00C0      		rjmp .L42
+ 362               	.L26:
+ 363 0228 F8E6      		ldi r31,lo8(104)
+ 364 022a FF12      		cpse r15,r31
+ 365 022c 00C0      		rjmp .L11
+ 366 022e 84E3      		ldi r24,lo8(52)
+ 367 0230 0E94 0000 		call _Z13UART_Transmith
+ 368 0234 CE01      		movw r24,r28
+ 369 0236 0996      		adiw r24,9
+ 370 0238 0E94 0000 		call _Z10getRawDataP7dataRaw
+ 371 023c 83E3      		ldi r24,lo8(51)
+ 372 023e 0E94 0000 		call _Z13UART_Transmith
+ 373 0242 A601      		movw r20,r12
+ 374 0244 BE01      		movw r22,r28
+ 375 0246 6F5E      		subi r22,-17
+ 376 0248 7F4F      		sbci r23,-1
+ 377 024a CE01      		movw r24,r28
+ 378 024c 0996      		adiw r24,9
+ 379 024e 0E94 0000 		call _Z10compensatePK7dataRawP9dataFinalP12callibration
+ 380 0252 81E3      		ldi r24,lo8(49)
+ 381 0254 0E94 0000 		call _Z13UART_Transmith
+ 382 0258 8FE9      		ldi r24,lo8(3999)
+ 383 025a 9FE0      		ldi r25,hi8(3999)
+ 384 025c 0197      	1:	sbiw r24,1
+ 385 025e 01F4      		brne 1b
+ 386 0260 00C0      		rjmp .
+ 387 0262 0000      		nop
+ 388 0264 FE01      		movw r30,r28
+ 389 0266 3196      		adiw r30,1
+ 390 0268 6F01      		movw r12,r30
+ 391 026a 88E0      		ldi r24,lo8(8)
+ 392               		0:
+ 393 026c 1192      		st Z+,__zero_reg__
+ 394 026e 8A95      		dec r24
+ 395 0270 01F4      		brne 0b
+ 396 0272 5601      		movw r10,r12
+ 397 0274 F12C      		mov r15,__zero_reg__
+ 398 0276 E12C      		mov r14,__zero_reg__
+ 399               	.L27:
+ 400 0278 E989      		ldd r30,Y+17
+ 401 027a FA89      		ldd r31,Y+18
+ 402 027c EE0D      		add r30,r14
+ 403 027e FF1D      		adc r31,r15
+ 404 0280 8081      		ld r24,Z
+ 405 0282 F501      		movw r30,r10
+ 406 0284 8193      		st Z+,r24
+ 407 0286 5F01      		movw r10,r30
+ 408 0288 0E94 0000 		call _Z13UART_Transmith
+ 409 028c FFEF      		ldi r31,-1
+ 410 028e EF1A      		sub r14,r31
+ 411 0290 FF0A      		sbc r15,r31
+ 412 0292 84E0      		ldi r24,4
+ 413 0294 E816      		cp r14,r24
+ 414 0296 F104      		cpc r15,__zero_reg__
+ 415 0298 01F4      		brne .L27
+ 416 029a 5E01      		movw r10,r28
+ 417 029c 95E0      		ldi r25,5
+ 418 029e A90E      		add r10,r25
+ 419 02a0 B11C      		adc r11,__zero_reg__
+ 420 02a2 F12C      		mov r15,__zero_reg__
+ 421 02a4 E12C      		mov r14,__zero_reg__
+ 422               	.L28:
+ 423 02a6 EB89      		ldd r30,Y+19
+ 424 02a8 FC89      		ldd r31,Y+20
+ 425 02aa EE0D      		add r30,r14
+ 426 02ac FF1D      		adc r31,r15
+ 427 02ae 8081      		ld r24,Z
+ 428 02b0 F501      		movw r30,r10
+ 429 02b2 8193      		st Z+,r24
+ 430 02b4 5F01      		movw r10,r30
+ 431 02b6 0E94 0000 		call _Z13UART_Transmith
+ 432 02ba FFEF      		ldi r31,-1
+ 433 02bc EF1A      		sub r14,r31
+ 434 02be FF0A      		sbc r15,r31
+ 435 02c0 84E0      		ldi r24,4
+ 436 02c2 E816      		cp r14,r24
+ 437 02c4 F104      		cpc r15,__zero_reg__
+ 438 02c6 01F4      		brne .L28
+ 439 02c8 68E0      		ldi r22,lo8(8)
+ 440 02ca C601      		movw r24,r12
+ 441 02cc 0E94 0000 		call _Z8transmitPhh
+ 442 02d0 82E3      		ldi r24,lo8(50)
+ 443 02d2 0E94 0000 		call _Z13UART_Transmith
+ 444 02d6 00C0      		rjmp .L11
+ 445               	.L29:
+ 446 02d8 9237      		cpi r25,lo8(114)
+ 447 02da 01F4      		brne .L31
+ 448 02dc 1182      		std Z+1,__zero_reg__
+ 449 02de 00C0      		rjmp .L44
+ 450               	.L31:
+ 451 02e0 1282      		std Z+2,__zero_reg__
+ 452 02e2 8183      		std Z+1,r24
+ 453 02e4 00C0      		rjmp .L30
+ 455               	.global	_Z4initv
+ 457               	_Z4initv:
+ 458               	/* prologue: function */
+ 459               	/* frame size = 0 */
+ 460               	/* stack size = 0 */
+ 461               	.L__stack_usage = 0
+ 462 02e6 8AB1      		in r24,0xa
+ 463 02e8 8C60      		ori r24,lo8(12)
+ 464 02ea 8AB9      		out 0xa,r24
+ 465 02ec 0E94 0000 		call _Z9UART_Initv
+ 466 02f0 81E0      		ldi r24,lo8(1)
+ 467 02f2 0E94 0000 		call _Z5servoh
+ 468 02f6 0E94 0000 		call _Z10MOTOR_initv
+ 469 02fa 8FE3      		ldi r24,lo8(-25537)
+ 470 02fc 9CE9      		ldi r25,hi8(-25537)
+ 471 02fe 0197      	1:	sbiw r24,1
+ 472 0300 01F4      		brne 1b
+ 473 0302 00C0      		rjmp .
+ 474 0304 0000      		nop
+ 475 0306 0E94 0000 		call _Z8I2C_Initv
+ 476 030a 8FE3      		ldi r24,lo8(-25537)
+ 477 030c 9CE9      		ldi r25,hi8(-25537)
+ 478 030e 0197      	1:	sbiw r24,1
+ 479 0310 01F4      		brne 1b
+ 480 0312 00C0      		rjmp .
+ 481 0314 0000      		nop
+ 482               	/* epilogue start */
+ 483 0316 0895      		ret
+ 485               		.section	.rodata
+ 486               	.LC0:
+ 487 0000 00        		.byte	0
+ 488 0001 00        		.byte	0
+ 489 0002 00        		.byte	0
+ 490 0003 6E        		.byte	110
+ 491 0004 01        		.byte	1
+ 492               		.section	.text.startup,"ax",@progbits
+ 493               	.global	main
+ 495               	main:
+ 496 0000 CF93      		push r28
+ 497 0002 DF93      		push r29
+ 498 0004 CDB7      		in r28,__SP_L__
+ 499 0006 DEB7      		in r29,__SP_H__
+ 500 0008 A197      		sbiw r28,33
+ 501 000a 0FB6      		in __tmp_reg__,__SREG__
+ 502 000c F894      		cli
+ 503 000e DEBF      		out __SP_H__,r29
+ 504 0010 0FBE      		out __SREG__,__tmp_reg__
+ 505 0012 CDBF      		out __SP_L__,r28
+ 506               	/* prologue: function */
+ 507               	/* frame size = 33 */
+ 508               	/* stack size = 35 */
+ 509               	.L__stack_usage = 35
+ 510 0014 0E94 0000 		call _Z4initv
+ 511 0018 85E0      		ldi r24,lo8(5)
+ 512 001a E0E0      		ldi r30,lo8(.LC0)
+ 513 001c F0E0      		ldi r31,hi8(.LC0)
+ 514 001e DE01      		movw r26,r28
+ 515 0020 5D96      		adiw r26,29
+ 516               		0:
+ 517 0022 0190      		ld r0,Z+
+ 518 0024 0D92      		st X+,r0
+ 519 0026 8A95      		dec r24
+ 520 0028 01F4      		brne 0b
+ 521 002a 8E01      		movw r16,r28
+ 522 002c 0F5F      		subi r16,-1
+ 523 002e 1F4F      		sbci r17,-1
+ 524 0030 8CE1      		ldi r24,lo8(28)
+ 525 0032 F801      		movw r30,r16
+ 526               		0:
+ 527 0034 1192      		st Z+,__zero_reg__
+ 528 0036 8A95      		dec r24
+ 529 0038 01F4      		brne 0b
+ 530               	.L48:
+ 531 003a B801      		movw r22,r16
+ 532 003c CE01      		movw r24,r28
+ 533 003e 4D96      		adiw r24,29
+ 534 0040 0E94 0000 		call _Z13check_commandP5PowerP12callibration
+ 535 0044 00C0      		rjmp .L48
+ 537               		.ident	"GCC: (GNU) 7.3.0"
+ 538               	.global __do_copy_data
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.cpp
+     /tmp/cc4GgfpV.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc4GgfpV.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc4GgfpV.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc4GgfpV.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc4GgfpV.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc4GgfpV.s:10     .text:0000000000000000 _Z10MOTOR_initv
+     /tmp/cc4GgfpV.s:27     .text:0000000000000010 _Z12MOTOR_deletev
+     /tmp/cc4GgfpV.s:42     .text:000000000000001c _Z10SERVO_initv
+     /tmp/cc4GgfpV.s:61     .text:0000000000000038 _Z12SERVO_deletev
+     /tmp/cc4GgfpV.s:76     .text:000000000000004c _Z6powerRh
+     /tmp/cc4GgfpV.s:87     .text:0000000000000050 _Z6powerLh
+     /tmp/cc4GgfpV.s:98     .text:0000000000000054 _Z5servoh
+     /tmp/cc4GgfpV.s:186    .text:00000000000000f8 _Z13check_commandP5PowerP12callibration
+     /tmp/cc4GgfpV.s:457    .text:00000000000002e6 _Z4initv
+     /tmp/cc4GgfpV.s:495    .text.startup:0000000000000000 main
+
+UNDEFINED SYMBOLS
+_Z14radioModulInitv
+_Z7receiveh
+_Z13UART_Transmith
+_Z10getRawDataP7dataRaw
+_Z10compensatePK7dataRawP9dataFinalP12callibration
+_Z8transmitPhh
+_Z9UART_Initv
+_Z8I2C_Initv
+__do_copy_data

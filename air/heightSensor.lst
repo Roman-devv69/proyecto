@@ -1,0 +1,936 @@
+   1               		.file	"heightSensor.cpp"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.global	_Z10heightInitP12callibration
+  10               	_Z10heightInitP12callibration:
+  11 0000 CF93      		push r28
+  12 0002 DF93      		push r29
+  13               	/* prologue: function */
+  14               	/* frame size = 0 */
+  15               	/* stack size = 2 */
+  16               	.L__stack_usage = 2
+  17 0004 EC01      		movw r28,r24
+  18 0006 47E5      		ldi r20,lo8(87)
+  19 0008 64EF      		ldi r22,lo8(-12)
+  20 000a 86E7      		ldi r24,lo8(118)
+  21 000c 0E94 0000 		call _Z14I2C_Write_Bytehhh
+  22 0010 4CE0      		ldi r20,lo8(12)
+  23 0012 65EF      		ldi r22,lo8(-11)
+  24 0014 86E7      		ldi r24,lo8(118)
+  25 0016 0E94 0000 		call _Z14I2C_Write_Bytehhh
+  26 001a 68E8      		ldi r22,lo8(-120)
+  27 001c 86E7      		ldi r24,lo8(118)
+  28 001e 0E94 0000 		call _Z13I2C_Read_Bytehh
+  29 0022 2881      		ld r18,Y
+  30 0024 3981      		ldd r19,Y+1
+  31 0026 820F      		add r24,r18
+  32 0028 932F      		mov r25,r19
+  33 002a 911D      		adc r25,__zero_reg__
+  34 002c 9983      		std Y+1,r25
+  35 002e 8883      		st Y,r24
+  36 0030 69E8      		ldi r22,lo8(-119)
+  37 0032 86E7      		ldi r24,lo8(118)
+  38 0034 0E94 0000 		call _Z13I2C_Read_Bytehh
+  39 0038 90E0      		ldi r25,0
+  40 003a 982F      		mov r25,r24
+  41 003c 8827      		clr r24
+  42 003e 2881      		ld r18,Y
+  43 0040 3981      		ldd r19,Y+1
+  44 0042 820F      		add r24,r18
+  45 0044 931F      		adc r25,r19
+  46 0046 9983      		std Y+1,r25
+  47 0048 8883      		st Y,r24
+  48 004a 6AE8      		ldi r22,lo8(-118)
+  49 004c 86E7      		ldi r24,lo8(118)
+  50 004e 0E94 0000 		call _Z13I2C_Read_Bytehh
+  51 0052 2A81      		ldd r18,Y+2
+  52 0054 3B81      		ldd r19,Y+3
+  53 0056 820F      		add r24,r18
+  54 0058 932F      		mov r25,r19
+  55 005a 911D      		adc r25,__zero_reg__
+  56 005c 9B83      		std Y+3,r25
+  57 005e 8A83      		std Y+2,r24
+  58 0060 6BE8      		ldi r22,lo8(-117)
+  59 0062 86E7      		ldi r24,lo8(118)
+  60 0064 0E94 0000 		call _Z13I2C_Read_Bytehh
+  61 0068 90E0      		ldi r25,0
+  62 006a 982F      		mov r25,r24
+  63 006c 8827      		clr r24
+  64 006e 2A81      		ldd r18,Y+2
+  65 0070 3B81      		ldd r19,Y+3
+  66 0072 820F      		add r24,r18
+  67 0074 931F      		adc r25,r19
+  68 0076 9B83      		std Y+3,r25
+  69 0078 8A83      		std Y+2,r24
+  70 007a 6CE8      		ldi r22,lo8(-116)
+  71 007c 86E7      		ldi r24,lo8(118)
+  72 007e 0E94 0000 		call _Z13I2C_Read_Bytehh
+  73 0082 2C81      		ldd r18,Y+4
+  74 0084 3D81      		ldd r19,Y+5
+  75 0086 820F      		add r24,r18
+  76 0088 932F      		mov r25,r19
+  77 008a 911D      		adc r25,__zero_reg__
+  78 008c 9D83      		std Y+5,r25
+  79 008e 8C83      		std Y+4,r24
+  80 0090 6DE8      		ldi r22,lo8(-115)
+  81 0092 86E7      		ldi r24,lo8(118)
+  82 0094 0E94 0000 		call _Z13I2C_Read_Bytehh
+  83 0098 90E0      		ldi r25,0
+  84 009a 982F      		mov r25,r24
+  85 009c 8827      		clr r24
+  86 009e 2C81      		ldd r18,Y+4
+  87 00a0 3D81      		ldd r19,Y+5
+  88 00a2 820F      		add r24,r18
+  89 00a4 931F      		adc r25,r19
+  90 00a6 9D83      		std Y+5,r25
+  91 00a8 8C83      		std Y+4,r24
+  92 00aa 6EE8      		ldi r22,lo8(-114)
+  93 00ac 86E7      		ldi r24,lo8(118)
+  94 00ae 0E94 0000 		call _Z13I2C_Read_Bytehh
+  95 00b2 2E81      		ldd r18,Y+6
+  96 00b4 3F81      		ldd r19,Y+7
+  97 00b6 820F      		add r24,r18
+  98 00b8 932F      		mov r25,r19
+  99 00ba 911D      		adc r25,__zero_reg__
+ 100 00bc 9F83      		std Y+7,r25
+ 101 00be 8E83      		std Y+6,r24
+ 102 00c0 6FE8      		ldi r22,lo8(-113)
+ 103 00c2 86E7      		ldi r24,lo8(118)
+ 104 00c4 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 105 00c8 90E0      		ldi r25,0
+ 106 00ca 982F      		mov r25,r24
+ 107 00cc 8827      		clr r24
+ 108 00ce 2E81      		ldd r18,Y+6
+ 109 00d0 3F81      		ldd r19,Y+7
+ 110 00d2 820F      		add r24,r18
+ 111 00d4 931F      		adc r25,r19
+ 112 00d6 9F83      		std Y+7,r25
+ 113 00d8 8E83      		std Y+6,r24
+ 114 00da 60E9      		ldi r22,lo8(-112)
+ 115 00dc 86E7      		ldi r24,lo8(118)
+ 116 00de 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 117 00e2 2885      		ldd r18,Y+8
+ 118 00e4 3985      		ldd r19,Y+9
+ 119 00e6 820F      		add r24,r18
+ 120 00e8 932F      		mov r25,r19
+ 121 00ea 911D      		adc r25,__zero_reg__
+ 122 00ec 9987      		std Y+9,r25
+ 123 00ee 8887      		std Y+8,r24
+ 124 00f0 61E9      		ldi r22,lo8(-111)
+ 125 00f2 86E7      		ldi r24,lo8(118)
+ 126 00f4 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 127 00f8 90E0      		ldi r25,0
+ 128 00fa 982F      		mov r25,r24
+ 129 00fc 8827      		clr r24
+ 130 00fe 2885      		ldd r18,Y+8
+ 131 0100 3985      		ldd r19,Y+9
+ 132 0102 820F      		add r24,r18
+ 133 0104 931F      		adc r25,r19
+ 134 0106 9987      		std Y+9,r25
+ 135 0108 8887      		std Y+8,r24
+ 136 010a 62E9      		ldi r22,lo8(-110)
+ 137 010c 86E7      		ldi r24,lo8(118)
+ 138 010e 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 139 0112 2A85      		ldd r18,Y+10
+ 140 0114 3B85      		ldd r19,Y+11
+ 141 0116 820F      		add r24,r18
+ 142 0118 932F      		mov r25,r19
+ 143 011a 911D      		adc r25,__zero_reg__
+ 144 011c 9B87      		std Y+11,r25
+ 145 011e 8A87      		std Y+10,r24
+ 146 0120 63E9      		ldi r22,lo8(-109)
+ 147 0122 86E7      		ldi r24,lo8(118)
+ 148 0124 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 149 0128 90E0      		ldi r25,0
+ 150 012a 982F      		mov r25,r24
+ 151 012c 8827      		clr r24
+ 152 012e 2A85      		ldd r18,Y+10
+ 153 0130 3B85      		ldd r19,Y+11
+ 154 0132 820F      		add r24,r18
+ 155 0134 931F      		adc r25,r19
+ 156 0136 9B87      		std Y+11,r25
+ 157 0138 8A87      		std Y+10,r24
+ 158 013a 64E9      		ldi r22,lo8(-108)
+ 159 013c 86E7      		ldi r24,lo8(118)
+ 160 013e 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 161 0142 2C85      		ldd r18,Y+12
+ 162 0144 3D85      		ldd r19,Y+13
+ 163 0146 820F      		add r24,r18
+ 164 0148 932F      		mov r25,r19
+ 165 014a 911D      		adc r25,__zero_reg__
+ 166 014c 9D87      		std Y+13,r25
+ 167 014e 8C87      		std Y+12,r24
+ 168 0150 65E9      		ldi r22,lo8(-107)
+ 169 0152 86E7      		ldi r24,lo8(118)
+ 170 0154 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 171 0158 90E0      		ldi r25,0
+ 172 015a 982F      		mov r25,r24
+ 173 015c 8827      		clr r24
+ 174 015e 2C85      		ldd r18,Y+12
+ 175 0160 3D85      		ldd r19,Y+13
+ 176 0162 820F      		add r24,r18
+ 177 0164 931F      		adc r25,r19
+ 178 0166 9D87      		std Y+13,r25
+ 179 0168 8C87      		std Y+12,r24
+ 180 016a 66E9      		ldi r22,lo8(-106)
+ 181 016c 86E7      		ldi r24,lo8(118)
+ 182 016e 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 183 0172 2E85      		ldd r18,Y+14
+ 184 0174 3F85      		ldd r19,Y+15
+ 185 0176 820F      		add r24,r18
+ 186 0178 932F      		mov r25,r19
+ 187 017a 911D      		adc r25,__zero_reg__
+ 188 017c 9F87      		std Y+15,r25
+ 189 017e 8E87      		std Y+14,r24
+ 190 0180 67E9      		ldi r22,lo8(-105)
+ 191 0182 86E7      		ldi r24,lo8(118)
+ 192 0184 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 193 0188 90E0      		ldi r25,0
+ 194 018a 982F      		mov r25,r24
+ 195 018c 8827      		clr r24
+ 196 018e 2E85      		ldd r18,Y+14
+ 197 0190 3F85      		ldd r19,Y+15
+ 198 0192 820F      		add r24,r18
+ 199 0194 931F      		adc r25,r19
+ 200 0196 9F87      		std Y+15,r25
+ 201 0198 8E87      		std Y+14,r24
+ 202 019a 68E9      		ldi r22,lo8(-104)
+ 203 019c 86E7      		ldi r24,lo8(118)
+ 204 019e 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 205 01a2 2889      		ldd r18,Y+16
+ 206 01a4 3989      		ldd r19,Y+17
+ 207 01a6 820F      		add r24,r18
+ 208 01a8 932F      		mov r25,r19
+ 209 01aa 911D      		adc r25,__zero_reg__
+ 210 01ac 998B      		std Y+17,r25
+ 211 01ae 888B      		std Y+16,r24
+ 212 01b0 69E9      		ldi r22,lo8(-103)
+ 213 01b2 86E7      		ldi r24,lo8(118)
+ 214 01b4 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 215 01b8 90E0      		ldi r25,0
+ 216 01ba 982F      		mov r25,r24
+ 217 01bc 8827      		clr r24
+ 218 01be 2889      		ldd r18,Y+16
+ 219 01c0 3989      		ldd r19,Y+17
+ 220 01c2 820F      		add r24,r18
+ 221 01c4 931F      		adc r25,r19
+ 222 01c6 998B      		std Y+17,r25
+ 223 01c8 888B      		std Y+16,r24
+ 224 01ca 6AE9      		ldi r22,lo8(-102)
+ 225 01cc 86E7      		ldi r24,lo8(118)
+ 226 01ce 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 227 01d2 2A89      		ldd r18,Y+18
+ 228 01d4 3B89      		ldd r19,Y+19
+ 229 01d6 820F      		add r24,r18
+ 230 01d8 932F      		mov r25,r19
+ 231 01da 911D      		adc r25,__zero_reg__
+ 232 01dc 9B8B      		std Y+19,r25
+ 233 01de 8A8B      		std Y+18,r24
+ 234 01e0 6BE9      		ldi r22,lo8(-101)
+ 235 01e2 86E7      		ldi r24,lo8(118)
+ 236 01e4 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 237 01e8 90E0      		ldi r25,0
+ 238 01ea 982F      		mov r25,r24
+ 239 01ec 8827      		clr r24
+ 240 01ee 2A89      		ldd r18,Y+18
+ 241 01f0 3B89      		ldd r19,Y+19
+ 242 01f2 820F      		add r24,r18
+ 243 01f4 931F      		adc r25,r19
+ 244 01f6 9B8B      		std Y+19,r25
+ 245 01f8 8A8B      		std Y+18,r24
+ 246 01fa 6CE9      		ldi r22,lo8(-100)
+ 247 01fc 86E7      		ldi r24,lo8(118)
+ 248 01fe 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 249 0202 2C89      		ldd r18,Y+20
+ 250 0204 3D89      		ldd r19,Y+21
+ 251 0206 820F      		add r24,r18
+ 252 0208 932F      		mov r25,r19
+ 253 020a 911D      		adc r25,__zero_reg__
+ 254 020c 9D8B      		std Y+21,r25
+ 255 020e 8C8B      		std Y+20,r24
+ 256 0210 6DE9      		ldi r22,lo8(-99)
+ 257 0212 86E7      		ldi r24,lo8(118)
+ 258 0214 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 259 0218 90E0      		ldi r25,0
+ 260 021a 982F      		mov r25,r24
+ 261 021c 8827      		clr r24
+ 262 021e 2C89      		ldd r18,Y+20
+ 263 0220 3D89      		ldd r19,Y+21
+ 264 0222 820F      		add r24,r18
+ 265 0224 931F      		adc r25,r19
+ 266 0226 9D8B      		std Y+21,r25
+ 267 0228 8C8B      		std Y+20,r24
+ 268 022a 6EE9      		ldi r22,lo8(-98)
+ 269 022c 86E7      		ldi r24,lo8(118)
+ 270 022e 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 271 0232 2E89      		ldd r18,Y+22
+ 272 0234 3F89      		ldd r19,Y+23
+ 273 0236 820F      		add r24,r18
+ 274 0238 932F      		mov r25,r19
+ 275 023a 911D      		adc r25,__zero_reg__
+ 276 023c 9F8B      		std Y+23,r25
+ 277 023e 8E8B      		std Y+22,r24
+ 278 0240 6FE9      		ldi r22,lo8(-97)
+ 279 0242 86E7      		ldi r24,lo8(118)
+ 280 0244 0E94 0000 		call _Z13I2C_Read_Bytehh
+ 281 0248 90E0      		ldi r25,0
+ 282 024a 982F      		mov r25,r24
+ 283 024c 8827      		clr r24
+ 284 024e 2E89      		ldd r18,Y+22
+ 285 0250 3F89      		ldd r19,Y+23
+ 286 0252 820F      		add r24,r18
+ 287 0254 931F      		adc r25,r19
+ 288 0256 9F8B      		std Y+23,r25
+ 289 0258 8E8B      		std Y+22,r24
+ 290               	/* epilogue start */
+ 291 025a DF91      		pop r29
+ 292 025c CF91      		pop r28
+ 293 025e 0895      		ret
+ 295               	.global	_Z10getRawDataP7dataRaw
+ 297               	_Z10getRawDataP7dataRaw:
+ 298 0260 0F93      		push r16
+ 299 0262 1F93      		push r17
+ 300 0264 CF93      		push r28
+ 301 0266 DF93      		push r29
+ 302 0268 00D0      		rcall .
+ 303 026a 00D0      		rcall .
+ 304 026c 00D0      		rcall .
+ 305 026e CDB7      		in r28,__SP_L__
+ 306 0270 DEB7      		in r29,__SP_H__
+ 307               	/* prologue: function */
+ 308               	/* frame size = 6 */
+ 309               	/* stack size = 10 */
+ 310               	.L__stack_usage = 10
+ 311 0272 8C01      		movw r16,r24
+ 312 0274 26E0      		ldi r18,lo8(6)
+ 313 0276 AE01      		movw r20,r28
+ 314 0278 4F5F      		subi r20,-1
+ 315 027a 5F4F      		sbci r21,-1
+ 316 027c 67EF      		ldi r22,lo8(-9)
+ 317 027e 86E7      		ldi r24,lo8(118)
+ 318 0280 0E94 0000 		call _Z14I2C_Read_ArrayhhPhh
+ 319 0284 8981      		ldd r24,Y+1
+ 320 0286 90E0      		ldi r25,0
+ 321 0288 B0E0      		ldi r27,0
+ 322 028a A0E0      		ldi r26,0
+ 323 028c 2CE0      		ldi r18,12
+ 324               		1:
+ 325 028e 880F      		lsl r24
+ 326 0290 991F      		rol r25
+ 327 0292 AA1F      		rol r26
+ 328 0294 BB1F      		rol r27
+ 329 0296 2A95      		dec r18
+ 330 0298 01F4      		brne 1b
+ 331 029a 4A81      		ldd r20,Y+2
+ 332 029c 50E0      		ldi r21,0
+ 333 029e 70E0      		ldi r23,0
+ 334 02a0 60E0      		ldi r22,0
+ 335 02a2 34E0      		ldi r19,4
+ 336               		1:
+ 337 02a4 440F      		lsl r20
+ 338 02a6 551F      		rol r21
+ 339 02a8 661F      		rol r22
+ 340 02aa 771F      		rol r23
+ 341 02ac 3A95      		dec r19
+ 342 02ae 01F4      		brne 1b
+ 343 02b0 840F      		add r24,r20
+ 344 02b2 951F      		adc r25,r21
+ 345 02b4 A61F      		adc r26,r22
+ 346 02b6 B71F      		adc r27,r23
+ 347 02b8 4B81      		ldd r20,Y+3
+ 348 02ba 50E0      		ldi r21,0
+ 349 02bc 70E0      		ldi r23,0
+ 350 02be 60E0      		ldi r22,0
+ 351 02c0 E4E0      		ldi r30,4
+ 352               		1:
+ 353 02c2 7595      		asr r23
+ 354 02c4 6795      		ror r22
+ 355 02c6 5795      		ror r21
+ 356 02c8 4795      		ror r20
+ 357 02ca EA95      		dec r30
+ 358 02cc 01F4      		brne 1b
+ 359 02ce 840F      		add r24,r20
+ 360 02d0 951F      		adc r25,r21
+ 361 02d2 A61F      		adc r26,r22
+ 362 02d4 B71F      		adc r27,r23
+ 363 02d6 F801      		movw r30,r16
+ 364 02d8 8083      		st Z,r24
+ 365 02da 9183      		std Z+1,r25
+ 366 02dc A283      		std Z+2,r26
+ 367 02de B383      		std Z+3,r27
+ 368 02e0 8C81      		ldd r24,Y+4
+ 369 02e2 90E0      		ldi r25,0
+ 370 02e4 B0E0      		ldi r27,0
+ 371 02e6 A0E0      		ldi r26,0
+ 372 02e8 1CE0      		ldi r17,12
+ 373               		1:
+ 374 02ea 880F      		lsl r24
+ 375 02ec 991F      		rol r25
+ 376 02ee AA1F      		rol r26
+ 377 02f0 BB1F      		rol r27
+ 378 02f2 1A95      		dec r17
+ 379 02f4 01F4      		brne 1b
+ 380 02f6 4D81      		ldd r20,Y+5
+ 381 02f8 50E0      		ldi r21,0
+ 382 02fa 70E0      		ldi r23,0
+ 383 02fc 60E0      		ldi r22,0
+ 384 02fe 04E0      		ldi r16,4
+ 385               		1:
+ 386 0300 440F      		lsl r20
+ 387 0302 551F      		rol r21
+ 388 0304 661F      		rol r22
+ 389 0306 771F      		rol r23
+ 390 0308 0A95      		dec r16
+ 391 030a 01F4      		brne 1b
+ 392 030c 840F      		add r24,r20
+ 393 030e 951F      		adc r25,r21
+ 394 0310 A61F      		adc r26,r22
+ 395 0312 B71F      		adc r27,r23
+ 396 0314 4E81      		ldd r20,Y+6
+ 397 0316 50E0      		ldi r21,0
+ 398 0318 70E0      		ldi r23,0
+ 399 031a 60E0      		ldi r22,0
+ 400 031c 24E0      		ldi r18,4
+ 401               		1:
+ 402 031e 7595      		asr r23
+ 403 0320 6795      		ror r22
+ 404 0322 5795      		ror r21
+ 405 0324 4795      		ror r20
+ 406 0326 2A95      		dec r18
+ 407 0328 01F4      		brne 1b
+ 408 032a 840F      		add r24,r20
+ 409 032c 951F      		adc r25,r21
+ 410 032e A61F      		adc r26,r22
+ 411 0330 B71F      		adc r27,r23
+ 412 0332 8483      		std Z+4,r24
+ 413 0334 9583      		std Z+5,r25
+ 414 0336 A683      		std Z+6,r26
+ 415 0338 B783      		std Z+7,r27
+ 416               	/* epilogue start */
+ 417 033a 2696      		adiw r28,6
+ 418 033c 0FB6      		in __tmp_reg__,__SREG__
+ 419 033e F894      		cli
+ 420 0340 DEBF      		out __SP_H__,r29
+ 421 0342 0FBE      		out __SREG__,__tmp_reg__
+ 422 0344 CDBF      		out __SP_L__,r28
+ 423 0346 DF91      		pop r29
+ 424 0348 CF91      		pop r28
+ 425 034a 1F91      		pop r17
+ 426 034c 0F91      		pop r16
+ 427 034e 0895      		ret
+ 429               	.global	_Z10compensatePK7dataRawP9dataFinalP12callibration
+ 431               	_Z10compensatePK7dataRawP9dataFinalP12callibration:
+ 432 0350 2F92      		push r2
+ 433 0352 3F92      		push r3
+ 434 0354 4F92      		push r4
+ 435 0356 5F92      		push r5
+ 436 0358 6F92      		push r6
+ 437 035a 7F92      		push r7
+ 438 035c 8F92      		push r8
+ 439 035e 9F92      		push r9
+ 440 0360 AF92      		push r10
+ 441 0362 BF92      		push r11
+ 442 0364 CF92      		push r12
+ 443 0366 DF92      		push r13
+ 444 0368 EF92      		push r14
+ 445 036a FF92      		push r15
+ 446 036c 0F93      		push r16
+ 447 036e 1F93      		push r17
+ 448 0370 CF93      		push r28
+ 449 0372 DF93      		push r29
+ 450 0374 00D0      		rcall .
+ 451 0376 00D0      		rcall .
+ 452 0378 00D0      		rcall .
+ 453 037a CDB7      		in r28,__SP_L__
+ 454 037c DEB7      		in r29,__SP_H__
+ 455               	/* prologue: function */
+ 456               	/* frame size = 6 */
+ 457               	/* stack size = 24 */
+ 458               	.L__stack_usage = 24
+ 459 037e 1C01      		movw r2,r24
+ 460 0380 8B01      		movw r16,r22
+ 461 0382 5E83      		std Y+6,r21
+ 462 0384 4D83      		std Y+5,r20
+ 463 0386 FC01      		movw r30,r24
+ 464 0388 8481      		ldd r24,Z+4
+ 465 038a 9581      		ldd r25,Z+5
+ 466 038c A681      		ldd r26,Z+6
+ 467 038e B781      		ldd r27,Z+7
+ 468 0390 FA01      		movw r30,r20
+ 469 0392 4081      		ld r20,Z
+ 470 0394 5181      		ldd r21,Z+1
+ 471 0396 70E0      		ldi r23,0
+ 472 0398 60E0      		ldi r22,0
+ 473 039a 4C01      		movw r8,r24
+ 474 039c 5D01      		movw r10,r26
+ 475 039e 24E0      		ldi r18,4
+ 476               		1:
+ 477 03a0 B594      		asr r11
+ 478 03a2 A794      		ror r10
+ 479 03a4 9794      		ror r9
+ 480 03a6 8794      		ror r8
+ 481 03a8 2A95      		dec r18
+ 482 03aa 01F4      		brne 1b
+ 483 03ac 841A      		sub r8,r20
+ 484 03ae 950A      		sbc r9,r21
+ 485 03b0 A60A      		sbc r10,r22
+ 486 03b2 B70A      		sbc r11,r23
+ 487 03b4 33E0      		ldi r19,3
+ 488               		1:
+ 489 03b6 B595      		asr r27
+ 490 03b8 A795      		ror r26
+ 491 03ba 9795      		ror r25
+ 492 03bc 8795      		ror r24
+ 493 03be 3A95      		dec r19
+ 494 03c0 01F4      		brne 1b
+ 495 03c2 440F      		lsl r20
+ 496 03c4 551F      		rol r21
+ 497 03c6 661F      		rol r22
+ 498 03c8 771F      		rol r23
+ 499 03ca 6C01      		movw r12,r24
+ 500 03cc 7D01      		movw r14,r26
+ 501 03ce C41A      		sub r12,r20
+ 502 03d0 D50A      		sbc r13,r21
+ 503 03d2 E60A      		sbc r14,r22
+ 504 03d4 F70A      		sbc r15,r23
+ 505 03d6 A701      		movw r20,r14
+ 506 03d8 9601      		movw r18,r12
+ 507 03da A281      		ldd r26,Z+2
+ 508 03dc B381      		ldd r27,Z+3
+ 509 03de 0E94 0000 		call __mulshisi3
+ 510 03e2 6B01      		movw r12,r22
+ 511 03e4 7C01      		movw r14,r24
+ 512 03e6 3BE0      		ldi r19,11
+ 513               		1:
+ 514 03e8 F594      		asr r15
+ 515 03ea E794      		ror r14
+ 516 03ec D794      		ror r13
+ 517 03ee C794      		ror r12
+ 518 03f0 3A95      		dec r19
+ 519 03f2 01F4      		brne 1b
+ 520 03f4 A501      		movw r20,r10
+ 521 03f6 9401      		movw r18,r8
+ 522 03f8 C501      		movw r24,r10
+ 523 03fa B401      		movw r22,r8
+ 524 03fc 0E94 0000 		call __mulsi3
+ 525 0400 9B01      		movw r18,r22
+ 526 0402 AC01      		movw r20,r24
+ 527 0404 6CE0      		ldi r22,12
+ 528               		1:
+ 529 0406 5595      		asr r21
+ 530 0408 4795      		ror r20
+ 531 040a 3795      		ror r19
+ 532 040c 2795      		ror r18
+ 533 040e 6A95      		dec r22
+ 534 0410 01F4      		brne 1b
+ 535 0412 A481      		ldd r26,Z+4
+ 536 0414 B581      		ldd r27,Z+5
+ 537 0416 0E94 0000 		call __mulshisi3
+ 538 041a AEE0      		ldi r26,14
+ 539               		1:
+ 540 041c 9595      		asr r25
+ 541 041e 8795      		ror r24
+ 542 0420 7795      		ror r23
+ 543 0422 6795      		ror r22
+ 544 0424 AA95      		dec r26
+ 545 0426 01F4      		brne 1b
+ 546 0428 C60E      		add r12,r22
+ 547 042a D71E      		adc r13,r23
+ 548 042c E81E      		adc r14,r24
+ 549 042e F91E      		adc r15,r25
+ 550 0430 C08E      		std Z+24,r12
+ 551 0432 D18E      		std Z+25,r13
+ 552 0434 E28E      		std Z+26,r14
+ 553 0436 F38E      		std Z+27,r15
+ 554 0438 A5E0      		ldi r26,lo8(5)
+ 555 043a B0E0      		ldi r27,0
+ 556 043c A701      		movw r20,r14
+ 557 043e 9601      		movw r18,r12
+ 558 0440 0E94 0000 		call __muluhisi3
+ 559 0444 6058      		subi r22,-128
+ 560 0446 7F4F      		sbci r23,-1
+ 561 0448 8F4F      		sbci r24,-1
+ 562 044a 9F4F      		sbci r25,-1
+ 563 044c 272F      		mov r18,r23
+ 564 044e 382F      		mov r19,r24
+ 565 0450 492F      		mov r20,r25
+ 566 0452 5527      		clr r21
+ 567 0454 47FD      		sbrc r20,7
+ 568 0456 5A95      		dec r21
+ 569 0458 2983      		std Y+1,r18
+ 570 045a 3A83      		std Y+2,r19
+ 571 045c 4B83      		std Y+3,r20
+ 572 045e 5C83      		std Y+4,r21
+ 573 0460 F594      		asr r15
+ 574 0462 E794      		ror r14
+ 575 0464 D794      		ror r13
+ 576 0466 C794      		ror r12
+ 577 0468 3AEF      		ldi r19,-6
+ 578 046a D31A      		sub r13,r19
+ 579 046c E108      		sbc r14,__zero_reg__
+ 580 046e F108      		sbc r15,__zero_reg__
+ 581 0470 C701      		movw r24,r14
+ 582 0472 B601      		movw r22,r12
+ 583 0474 22E0      		ldi r18,2
+ 584               		1:
+ 585 0476 9595      		asr r25
+ 586 0478 8795      		ror r24
+ 587 047a 7795      		ror r23
+ 588 047c 6795      		ror r22
+ 589 047e 2A95      		dec r18
+ 590 0480 01F4      		brne 1b
+ 591 0482 9B01      		movw r18,r22
+ 592 0484 AC01      		movw r20,r24
+ 593 0486 0E94 0000 		call __mulsi3
+ 594 048a 4B01      		movw r8,r22
+ 595 048c 5C01      		movw r10,r24
+ 596 048e AC01      		movw r20,r24
+ 597 0490 9B01      		movw r18,r22
+ 598 0492 6BE0      		ldi r22,11
+ 599               		1:
+ 600 0494 5595      		asr r21
+ 601 0496 4795      		ror r20
+ 602 0498 3795      		ror r19
+ 603 049a 2795      		ror r18
+ 604 049c 6A95      		dec r22
+ 605 049e 01F4      		brne 1b
+ 606 04a0 A089      		ldd r26,Z+16
+ 607 04a2 B189      		ldd r27,Z+17
+ 608 04a4 0E94 0000 		call __mulshisi3
+ 609 04a8 2B01      		movw r4,r22
+ 610 04aa 3C01      		movw r6,r24
+ 611 04ac A685      		ldd r26,Z+14
+ 612 04ae B785      		ldd r27,Z+15
+ 613 04b0 A701      		movw r20,r14
+ 614 04b2 9601      		movw r18,r12
+ 615 04b4 0E94 0000 		call __mulshisi3
+ 616 04b8 660F      		lsl r22
+ 617 04ba 771F      		rol r23
+ 618 04bc 881F      		rol r24
+ 619 04be 991F      		rol r25
+ 620 04c0 460E      		add r4,r22
+ 621 04c2 571E      		adc r5,r23
+ 622 04c4 681E      		adc r6,r24
+ 623 04c6 791E      		adc r7,r25
+ 624 04c8 B2E0      		ldi r27,2
+ 625               		1:
+ 626 04ca 7594      		asr r7
+ 627 04cc 6794      		ror r6
+ 628 04ce 5794      		ror r5
+ 629 04d0 4794      		ror r4
+ 630 04d2 BA95      		dec r27
+ 631 04d4 01F4      		brne 1b
+ 632 04d6 A285      		ldd r26,Z+10
+ 633 04d8 B385      		ldd r27,Z+11
+ 634 04da A501      		movw r20,r10
+ 635 04dc 9401      		movw r18,r8
+ 636 04de 8DE0      		ldi r24,13
+ 637               		1:
+ 638 04e0 5595      		asr r21
+ 639 04e2 4795      		ror r20
+ 640 04e4 3795      		ror r19
+ 641 04e6 2795      		ror r18
+ 642 04e8 8A95      		dec r24
+ 643 04ea 01F4      		brne 1b
+ 644 04ec 0E94 0000 		call __mulshisi3
+ 645 04f0 4B01      		movw r8,r22
+ 646 04f2 5C01      		movw r10,r24
+ 647 04f4 93E0      		ldi r25,3
+ 648               		1:
+ 649 04f6 B594      		asr r11
+ 650 04f8 A794      		ror r10
+ 651 04fa 9794      		ror r9
+ 652 04fc 8794      		ror r8
+ 653 04fe 9A95      		dec r25
+ 654 0500 01F4      		brne 1b
+ 655 0502 A085      		ldd r26,Z+8
+ 656 0504 B185      		ldd r27,Z+9
+ 657 0506 A701      		movw r20,r14
+ 658 0508 9601      		movw r18,r12
+ 659 050a 0E94 0000 		call __mulshisi3
+ 660 050e 9B01      		movw r18,r22
+ 661 0510 AC01      		movw r20,r24
+ 662 0512 5595      		asr r21
+ 663 0514 4795      		ror r20
+ 664 0516 3795      		ror r19
+ 665 0518 2795      		ror r18
+ 666 051a 280D      		add r18,r8
+ 667 051c 391D      		adc r19,r9
+ 668 051e 4A1D      		adc r20,r10
+ 669 0520 5B1D      		adc r21,r11
+ 670 0522 72E1      		ldi r23,18
+ 671               		1:
+ 672 0524 5595      		asr r21
+ 673 0526 4795      		ror r20
+ 674 0528 3795      		ror r19
+ 675 052a 2795      		ror r18
+ 676 052c 7A95      		dec r23
+ 677 052e 01F4      		brne 1b
+ 678 0530 3058      		subi r19,-128
+ 679 0532 4F4F      		sbci r20,-1
+ 680 0534 5F4F      		sbci r21,-1
+ 681 0536 A681      		ldd r26,Z+6
+ 682 0538 B781      		ldd r27,Z+7
+ 683 053a 0E94 0000 		call __muluhisi3
+ 684 053e 6B01      		movw r12,r22
+ 685 0540 7C01      		movw r14,r24
+ 686 0542 F101      		movw r30,r2
+ 687 0544 8081      		ld r24,Z
+ 688 0546 9181      		ldd r25,Z+1
+ 689 0548 A281      		ldd r26,Z+2
+ 690 054a B381      		ldd r27,Z+3
+ 691 054c 20E0      		ldi r18,0
+ 692 054e 30E0      		ldi r19,0
+ 693 0550 40E1      		ldi r20,lo8(16)
+ 694 0552 50E0      		ldi r21,0
+ 695 0554 281B      		sub r18,r24
+ 696 0556 390B      		sbc r19,r25
+ 697 0558 4A0B      		sbc r20,r26
+ 698 055a 5B0B      		sbc r21,r27
+ 699 055c AD81      		ldd r26,Y+5
+ 700 055e BE81      		ldd r27,Y+6
+ 701 0560 1C96      		adiw r26,12
+ 702 0562 6D91      		ld r22,X+
+ 703 0564 7C91      		ld r23,X
+ 704 0566 072E      		mov __tmp_reg__,r23
+ 705 0568 000C      		lsl r0
+ 706 056a 880B      		sbc r24,r24
+ 707 056c 990B      		sbc r25,r25
+ 708 056e CB01      		movw r24,r22
+ 709 0570 7727      		clr r23
+ 710 0572 6627      		clr r22
+ 711 0574 460E      		add r4,r22
+ 712 0576 571E      		adc r5,r23
+ 713 0578 681E      		adc r6,r24
+ 714 057a 791E      		adc r7,r25
+ 715 057c FCE0      		ldi r31,12
+ 716               		1:
+ 717 057e 7594      		asr r7
+ 718 0580 6794      		ror r6
+ 719 0582 5794      		ror r5
+ 720 0584 4794      		ror r4
+ 721 0586 FA95      		dec r31
+ 722 0588 01F4      		brne 1b
+ 723 058a 2419      		sub r18,r4
+ 724 058c 3509      		sbc r19,r5
+ 725 058e 4609      		sbc r20,r6
+ 726 0590 5709      		sbc r21,r7
+ 727 0592 A5E3      		ldi r26,lo8(53)
+ 728 0594 BCE0      		ldi r27,lo8(12)
+ 729 0596 0E94 0000 		call __muluhisi3
+ 730 059a A701      		movw r20,r14
+ 731 059c 9601      		movw r18,r12
+ 732 059e AFE0      		ldi r26,15
+ 733               		1:
+ 734 05a0 5595      		asr r21
+ 735 05a2 4795      		ror r20
+ 736 05a4 3795      		ror r19
+ 737 05a6 2795      		ror r18
+ 738 05a8 AA95      		dec r26
+ 739 05aa 01F4      		brne 1b
+ 740 05ac 97FD      		sbrc r25,7
+ 741 05ae 00C0      		rjmp .L4
+ 742 05b0 660F      		lsl r22
+ 743 05b2 771F      		rol r23
+ 744 05b4 881F      		rol r24
+ 745 05b6 991F      		rol r25
+ 746 05b8 0E94 0000 		call __udivmodsi4
+ 747 05bc 4901      		movw r8,r18
+ 748 05be 5A01      		movw r10,r20
+ 749               	.L5:
+ 750 05c0 C501      		movw r24,r10
+ 751 05c2 B401      		movw r22,r8
+ 752 05c4 23E0      		ldi r18,3
+ 753               		1:
+ 754 05c6 9695      		lsr r25
+ 755 05c8 8795      		ror r24
+ 756 05ca 7795      		ror r23
+ 757 05cc 6795      		ror r22
+ 758 05ce 2A95      		dec r18
+ 759 05d0 01F4      		brne 1b
+ 760 05d2 9B01      		movw r18,r22
+ 761 05d4 AC01      		movw r20,r24
+ 762 05d6 0E94 0000 		call __mulsi3
+ 763 05da 9B01      		movw r18,r22
+ 764 05dc AC01      		movw r20,r24
+ 765 05de 6DE0      		ldi r22,13
+ 766               		1:
+ 767 05e0 5695      		lsr r21
+ 768 05e2 4795      		ror r20
+ 769 05e4 3795      		ror r19
+ 770 05e6 2795      		ror r18
+ 771 05e8 6A95      		dec r22
+ 772 05ea 01F4      		brne 1b
+ 773 05ec ED81      		ldd r30,Y+5
+ 774 05ee FE81      		ldd r31,Y+6
+ 775 05f0 A689      		ldd r26,Z+22
+ 776 05f2 B789      		ldd r27,Z+23
+ 777 05f4 0E94 0000 		call __mulshisi3
+ 778 05f8 6B01      		movw r12,r22
+ 779 05fa 7C01      		movw r14,r24
+ 780 05fc 7CE0      		ldi r23,12
+ 781               		1:
+ 782 05fe F594      		asr r15
+ 783 0600 E794      		ror r14
+ 784 0602 D794      		ror r13
+ 785 0604 C794      		ror r12
+ 786 0606 7A95      		dec r23
+ 787 0608 01F4      		brne 1b
+ 788 060a A501      		movw r20,r10
+ 789 060c 9401      		movw r18,r8
+ 790 060e A2E0      		ldi r26,2
+ 791               		1:
+ 792 0610 5695      		lsr r21
+ 793 0612 4795      		ror r20
+ 794 0614 3795      		ror r19
+ 795 0616 2795      		ror r18
+ 796 0618 AA95      		dec r26
+ 797 061a 01F4      		brne 1b
+ 798 061c A489      		ldd r26,Z+20
+ 799 061e B589      		ldd r27,Z+21
+ 800 0620 0E94 0000 		call __mulshisi3
+ 801 0624 9B01      		movw r18,r22
+ 802 0626 AC01      		movw r20,r24
+ 803 0628 BDE0      		ldi r27,13
+ 804               		1:
+ 805 062a 5595      		asr r21
+ 806 062c 4795      		ror r20
+ 807 062e 3795      		ror r19
+ 808 0630 2795      		ror r18
+ 809 0632 BA95      		dec r27
+ 810 0634 01F4      		brne 1b
+ 811 0636 2C0D      		add r18,r12
+ 812 0638 3D1D      		adc r19,r13
+ 813 063a 4E1D      		adc r20,r14
+ 814 063c 5F1D      		adc r21,r15
+ 815 063e C288      		ldd r12,Z+18
+ 816 0640 D388      		ldd r13,Z+19
+ 817 0642 0D2C      		mov __tmp_reg__,r13
+ 818 0644 000C      		lsl r0
+ 819 0646 EE08      		sbc r14,r14
+ 820 0648 FF08      		sbc r15,r15
+ 821 064a 2C0D      		add r18,r12
+ 822 064c 3D1D      		adc r19,r13
+ 823 064e 4E1D      		adc r20,r14
+ 824 0650 5F1D      		adc r21,r15
+ 825 0652 84E0      		ldi r24,4
+ 826               		1:
+ 827 0654 5595      		asr r21
+ 828 0656 4795      		ror r20
+ 829 0658 3795      		ror r19
+ 830 065a 2795      		ror r18
+ 831 065c 8A95      		dec r24
+ 832 065e 01F4      		brne 1b
+ 833 0660 820E      		add r8,r18
+ 834 0662 931E      		adc r9,r19
+ 835 0664 A41E      		adc r10,r20
+ 836 0666 B51E      		adc r11,r21
+ 837 0668 68E1      		ldi r22,lo8(24)
+ 838 066a 70E0      		ldi r23,0
+ 839 066c 90E0      		ldi r25,0
+ 840 066e 80E0      		ldi r24,0
+ 841               	.L6:
+ 842 0670 D801      		movw r26,r16
+ 843 0672 ED91      		ld r30,X+
+ 844 0674 FC91      		ld r31,X
+ 845 0676 1197      		sbiw r26,1
+ 846 0678 E80F      		add r30,r24
+ 847 067a F91F      		adc r31,r25
+ 848 067c 7501      		movw r14,r10
+ 849 067e 6401      		movw r12,r8
+ 850 0680 062E      		mov r0,r22
+ 851 0682 00C0      		rjmp 2f
+ 852               		1:
+ 853 0684 F694      		lsr r15
+ 854 0686 E794      		ror r14
+ 855 0688 D794      		ror r13
+ 856 068a C794      		ror r12
+ 857               		2:
+ 858 068c 0A94      		dec r0
+ 859 068e 02F4      		brpl 1b
+ 860 0690 C082      		st Z,r12
+ 861 0692 1296      		adiw r26,2
+ 862 0694 ED91      		ld r30,X+
+ 863 0696 FC91      		ld r31,X
+ 864 0698 E80F      		add r30,r24
+ 865 069a F91F      		adc r31,r25
+ 866 069c C980      		ldd r12,Y+1
+ 867 069e DA80      		ldd r13,Y+2
+ 868 06a0 EB80      		ldd r14,Y+3
+ 869 06a2 FC80      		ldd r15,Y+4
+ 870 06a4 062E      		mov r0,r22
+ 871 06a6 00C0      		rjmp 2f
+ 872               		1:
+ 873 06a8 F594      		asr r15
+ 874 06aa E794      		ror r14
+ 875 06ac D794      		ror r13
+ 876 06ae C794      		ror r12
+ 877               		2:
+ 878 06b0 0A94      		dec r0
+ 879 06b2 02F4      		brpl 1b
+ 880 06b4 C082      		st Z,r12
+ 881 06b6 0196      		adiw r24,1
+ 882 06b8 6850      		subi r22,8
+ 883 06ba 7109      		sbc r23,__zero_reg__
+ 884 06bc 8430      		cpi r24,4
+ 885 06be 9105      		cpc r25,__zero_reg__
+ 886 06c0 01F4      		brne .L6
+ 887               	/* epilogue start */
+ 888 06c2 2696      		adiw r28,6
+ 889 06c4 0FB6      		in __tmp_reg__,__SREG__
+ 890 06c6 F894      		cli
+ 891 06c8 DEBF      		out __SP_H__,r29
+ 892 06ca 0FBE      		out __SREG__,__tmp_reg__
+ 893 06cc CDBF      		out __SP_L__,r28
+ 894 06ce DF91      		pop r29
+ 895 06d0 CF91      		pop r28
+ 896 06d2 1F91      		pop r17
+ 897 06d4 0F91      		pop r16
+ 898 06d6 FF90      		pop r15
+ 899 06d8 EF90      		pop r14
+ 900 06da DF90      		pop r13
+ 901 06dc CF90      		pop r12
+ 902 06de BF90      		pop r11
+ 903 06e0 AF90      		pop r10
+ 904 06e2 9F90      		pop r9
+ 905 06e4 8F90      		pop r8
+ 906 06e6 7F90      		pop r7
+ 907 06e8 6F90      		pop r6
+ 908 06ea 5F90      		pop r5
+ 909 06ec 4F90      		pop r4
+ 910 06ee 3F90      		pop r3
+ 911 06f0 2F90      		pop r2
+ 912 06f2 0895      		ret
+ 913               	.L4:
+ 914 06f4 0E94 0000 		call __udivmodsi4
+ 915 06f8 4901      		movw r8,r18
+ 916 06fa 5A01      		movw r10,r20
+ 917 06fc 880C      		lsl r8
+ 918 06fe 991C      		rol r9
+ 919 0700 AA1C      		rol r10
+ 920 0702 BB1C      		rol r11
+ 921 0704 00C0      		rjmp .L5
+ 923               		.ident	"GCC: (GNU) 7.3.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 heightSensor.cpp
+     /tmp/ccRtfJh3.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccRtfJh3.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccRtfJh3.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccRtfJh3.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccRtfJh3.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccRtfJh3.s:10     .text:0000000000000000 _Z10heightInitP12callibration
+     /tmp/ccRtfJh3.s:297    .text:0000000000000260 _Z10getRawDataP7dataRaw
+     /tmp/ccRtfJh3.s:431    .text:0000000000000350 _Z10compensatePK7dataRawP9dataFinalP12callibration
+
+UNDEFINED SYMBOLS
+_Z14I2C_Write_Bytehhh
+_Z13I2C_Read_Bytehh
+_Z14I2C_Read_ArrayhhPhh
+__mulshisi3
+__mulsi3
+__muluhisi3
+__udivmodsi4

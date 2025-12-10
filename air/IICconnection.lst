@@ -1,0 +1,280 @@
+   1               		.file	"IICconnection.cpp"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.global	_Z8I2C_Initv
+  10               	_Z8I2C_Initv:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 88E4      		ldi r24,lo8(72)
+  16 0002 8093 B800 		sts 184,r24
+  17 0006 1092 B900 		sts 185,__zero_reg__
+  18               	/* epilogue start */
+  19 000a 0895      		ret
+  21               	.global	_Z9I2C_Startv
+  23               	_Z9I2C_Startv:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	/* stack size = 0 */
+  27               	.L__stack_usage = 0
+  28 000c 84EA      		ldi r24,lo8(-92)
+  29 000e 8093 BC00 		sts 188,r24
+  30               	.L3:
+  31 0012 8091 BC00 		lds r24,188
+  32 0016 87FF      		sbrs r24,7
+  33 0018 00C0      		rjmp .L3
+  34               	/* epilogue start */
+  35 001a 0895      		ret
+  37               	.global	_Z8I2C_Stopv
+  39               	_Z8I2C_Stopv:
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	/* stack size = 0 */
+  43               	.L__stack_usage = 0
+  44 001c 84E9      		ldi r24,lo8(-108)
+  45 001e 8093 BC00 		sts 188,r24
+  46               	/* epilogue start */
+  47 0022 0895      		ret
+  49               	.global	_Z9I2C_Writeh
+  51               	_Z9I2C_Writeh:
+  52               	/* prologue: function */
+  53               	/* frame size = 0 */
+  54               	/* stack size = 0 */
+  55               	.L__stack_usage = 0
+  56 0024 8093 BB00 		sts 187,r24
+  57 0028 84E8      		ldi r24,lo8(-124)
+  58 002a 8093 BC00 		sts 188,r24
+  59               	.L7:
+  60 002e 8091 BC00 		lds r24,188
+  61 0032 87FF      		sbrs r24,7
+  62 0034 00C0      		rjmp .L7
+  63               	/* epilogue start */
+  64 0036 0895      		ret
+  66               	.global	_Z12I2C_Read_ACKv
+  68               	_Z12I2C_Read_ACKv:
+  69               	/* prologue: function */
+  70               	/* frame size = 0 */
+  71               	/* stack size = 0 */
+  72               	.L__stack_usage = 0
+  73 0038 84EC      		ldi r24,lo8(-60)
+  74 003a 8093 BC00 		sts 188,r24
+  75               	.L10:
+  76 003e 8091 BC00 		lds r24,188
+  77 0042 87FF      		sbrs r24,7
+  78 0044 00C0      		rjmp .L10
+  79 0046 8091 BB00 		lds r24,187
+  80               	/* epilogue start */
+  81 004a 0895      		ret
+  83               	.global	_Z13I2C_Read_NACKv
+  85               	_Z13I2C_Read_NACKv:
+  86               	/* prologue: function */
+  87               	/* frame size = 0 */
+  88               	/* stack size = 0 */
+  89               	.L__stack_usage = 0
+  90 004c 84E8      		ldi r24,lo8(-124)
+  91 004e 8093 BC00 		sts 188,r24
+  92               	.L13:
+  93 0052 8091 BC00 		lds r24,188
+  94 0056 87FF      		sbrs r24,7
+  95 0058 00C0      		rjmp .L13
+  96 005a 8091 BB00 		lds r24,187
+  97               	/* epilogue start */
+  98 005e 0895      		ret
+ 100               	.global	_Z14I2C_Write_Bytehhh
+ 102               	_Z14I2C_Write_Bytehhh:
+ 103 0060 1F93      		push r17
+ 104 0062 CF93      		push r28
+ 105 0064 DF93      		push r29
+ 106               	/* prologue: function */
+ 107               	/* frame size = 0 */
+ 108               	/* stack size = 3 */
+ 109               	.L__stack_usage = 3
+ 110 0066 182F      		mov r17,r24
+ 111 0068 D62F      		mov r29,r22
+ 112 006a C42F      		mov r28,r20
+ 113 006c 0E94 0000 		call _Z9I2C_Startv
+ 114 0070 812F      		mov r24,r17
+ 115 0072 880F      		lsl r24
+ 116 0074 0E94 0000 		call _Z9I2C_Writeh
+ 117 0078 8D2F      		mov r24,r29
+ 118 007a 0E94 0000 		call _Z9I2C_Writeh
+ 119 007e 8C2F      		mov r24,r28
+ 120 0080 0E94 0000 		call _Z9I2C_Writeh
+ 121 0084 84E9      		ldi r24,lo8(-108)
+ 122 0086 8093 BC00 		sts 188,r24
+ 123 008a 8FE1      		ldi r24,lo8(19999)
+ 124 008c 9EE4      		ldi r25,hi8(19999)
+ 125 008e 0197      	1:	sbiw r24,1
+ 126 0090 01F4      		brne 1b
+ 127 0092 00C0      		rjmp .
+ 128 0094 0000      		nop
+ 129               	/* epilogue start */
+ 130 0096 DF91      		pop r29
+ 131 0098 CF91      		pop r28
+ 132 009a 1F91      		pop r17
+ 133 009c 0895      		ret
+ 135               	.global	_Z15I2C_Write_ArrayhhPhh
+ 137               	_Z15I2C_Write_ArrayhhPhh:
+ 138 009e EF92      		push r14
+ 139 00a0 FF92      		push r15
+ 140 00a2 0F93      		push r16
+ 141 00a4 1F93      		push r17
+ 142 00a6 CF93      		push r28
+ 143 00a8 DF93      		push r29
+ 144               	/* prologue: function */
+ 145               	/* frame size = 0 */
+ 146               	/* stack size = 6 */
+ 147               	.L__stack_usage = 6
+ 148 00aa C82F      		mov r28,r24
+ 149 00ac F62E      		mov r15,r22
+ 150 00ae E42E      		mov r14,r20
+ 151 00b0 152F      		mov r17,r21
+ 152 00b2 022F      		mov r16,r18
+ 153 00b4 0E94 0000 		call _Z9I2C_Startv
+ 154 00b8 8C2F      		mov r24,r28
+ 155 00ba 880F      		lsl r24
+ 156 00bc 0E94 0000 		call _Z9I2C_Writeh
+ 157 00c0 CE2D      		mov r28,r14
+ 158 00c2 D12F      		mov r29,r17
+ 159 00c4 0C0F      		add r16,r28
+ 160 00c6 1D2F      		mov r17,r29
+ 161 00c8 111D      		adc r17,__zero_reg__
+ 162               	.L18:
+ 163 00ca C017      		cp r28,r16
+ 164 00cc D107      		cpc r29,r17
+ 165 00ce 01F0      		breq .L17
+ 166 00d0 8F2D      		mov r24,r15
+ 167 00d2 0E94 0000 		call _Z9I2C_Writeh
+ 168 00d6 8991      		ld r24,Y+
+ 169 00d8 0E94 0000 		call _Z9I2C_Writeh
+ 170 00dc 8FE1      		ldi r24,lo8(19999)
+ 171 00de 9EE4      		ldi r25,hi8(19999)
+ 172 00e0 0197      	1:	sbiw r24,1
+ 173 00e2 01F4      		brne 1b
+ 174 00e4 00C0      		rjmp .
+ 175 00e6 0000      		nop
+ 176 00e8 00C0      		rjmp .L18
+ 177               	.L17:
+ 178 00ea 84E9      		ldi r24,lo8(-108)
+ 179 00ec 8093 BC00 		sts 188,r24
+ 180               	/* epilogue start */
+ 181 00f0 DF91      		pop r29
+ 182 00f2 CF91      		pop r28
+ 183 00f4 1F91      		pop r17
+ 184 00f6 0F91      		pop r16
+ 185 00f8 FF90      		pop r15
+ 186 00fa EF90      		pop r14
+ 187 00fc 0895      		ret
+ 189               	.global	_Z13I2C_Read_Bytehh
+ 191               	_Z13I2C_Read_Bytehh:
+ 192 00fe CF93      		push r28
+ 193 0100 DF93      		push r29
+ 194               	/* prologue: function */
+ 195               	/* frame size = 0 */
+ 196               	/* stack size = 2 */
+ 197               	.L__stack_usage = 2
+ 198 0102 C82F      		mov r28,r24
+ 199 0104 D62F      		mov r29,r22
+ 200 0106 0E94 0000 		call _Z9I2C_Startv
+ 201 010a 8C2F      		mov r24,r28
+ 202 010c 880F      		lsl r24
+ 203 010e 0E94 0000 		call _Z9I2C_Writeh
+ 204 0112 8D2F      		mov r24,r29
+ 205 0114 0E94 0000 		call _Z9I2C_Writeh
+ 206 0118 0E94 0000 		call _Z9I2C_Startv
+ 207 011c 8C2F      		mov r24,r28
+ 208 011e 880F      		lsl r24
+ 209 0120 8160      		ori r24,lo8(1)
+ 210 0122 0E94 0000 		call _Z9I2C_Writeh
+ 211 0126 0E94 0000 		call _Z13I2C_Read_NACKv
+ 212 012a 94E9      		ldi r25,lo8(-108)
+ 213 012c 9093 BC00 		sts 188,r25
+ 214               	/* epilogue start */
+ 215 0130 DF91      		pop r29
+ 216 0132 CF91      		pop r28
+ 217 0134 0895      		ret
+ 219               	.global	_Z14I2C_Read_ArrayhhPhh
+ 221               	_Z14I2C_Read_ArrayhhPhh:
+ 222 0136 DF92      		push r13
+ 223 0138 EF92      		push r14
+ 224 013a FF92      		push r15
+ 225 013c 0F93      		push r16
+ 226 013e 1F93      		push r17
+ 227 0140 CF93      		push r28
+ 228 0142 DF93      		push r29
+ 229               	/* prologue: function */
+ 230               	/* frame size = 0 */
+ 231               	/* stack size = 7 */
+ 232               	.L__stack_usage = 7
+ 233 0144 182F      		mov r17,r24
+ 234 0146 F62E      		mov r15,r22
+ 235 0148 EA01      		movw r28,r20
+ 236 014a 022F      		mov r16,r18
+ 237 014c 0E94 0000 		call _Z9I2C_Startv
+ 238 0150 812F      		mov r24,r17
+ 239 0152 880F      		lsl r24
+ 240 0154 0E94 0000 		call _Z9I2C_Writeh
+ 241 0158 8F2D      		mov r24,r15
+ 242 015a 0E94 0000 		call _Z9I2C_Writeh
+ 243 015e 0E94 0000 		call _Z9I2C_Startv
+ 244 0162 812F      		mov r24,r17
+ 245 0164 880F      		lsl r24
+ 246 0166 8160      		ori r24,lo8(1)
+ 247 0168 0E94 0000 		call _Z9I2C_Writeh
+ 248 016c D12C      		mov r13,__zero_reg__
+ 249 016e 0150      		subi r16,1
+ 250 0170 110B      		sbc r17,r17
+ 251               	.L22:
+ 252 0172 ED2C      		mov r14,r13
+ 253 0174 F12C      		mov r15,__zero_reg__
+ 254 0176 E016      		cp r14,r16
+ 255 0178 F106      		cpc r15,r17
+ 256 017a 04F4      		brge .L21
+ 257 017c EC0E      		add r14,r28
+ 258 017e FD1E      		adc r15,r29
+ 259 0180 0E94 0000 		call _Z12I2C_Read_ACKv
+ 260 0184 F701      		movw r30,r14
+ 261 0186 8083      		st Z,r24
+ 262 0188 D394      		inc r13
+ 263 018a 00C0      		rjmp .L22
+ 264               	.L21:
+ 265 018c C00F      		add r28,r16
+ 266 018e D11F      		adc r29,r17
+ 267 0190 0E94 0000 		call _Z13I2C_Read_NACKv
+ 268 0194 8883      		st Y,r24
+ 269 0196 84E9      		ldi r24,lo8(-108)
+ 270 0198 8093 BC00 		sts 188,r24
+ 271               	/* epilogue start */
+ 272 019c DF91      		pop r29
+ 273 019e CF91      		pop r28
+ 274 01a0 1F91      		pop r17
+ 275 01a2 0F91      		pop r16
+ 276 01a4 FF90      		pop r15
+ 277 01a6 EF90      		pop r14
+ 278 01a8 DF90      		pop r13
+ 279 01aa 0895      		ret
+ 281               		.ident	"GCC: (GNU) 7.3.0"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 IICconnection.cpp
+     /tmp/cckQ8K5q.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cckQ8K5q.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cckQ8K5q.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cckQ8K5q.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cckQ8K5q.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cckQ8K5q.s:10     .text:0000000000000000 _Z8I2C_Initv
+     /tmp/cckQ8K5q.s:23     .text:000000000000000c _Z9I2C_Startv
+     /tmp/cckQ8K5q.s:39     .text:000000000000001c _Z8I2C_Stopv
+     /tmp/cckQ8K5q.s:51     .text:0000000000000024 _Z9I2C_Writeh
+     /tmp/cckQ8K5q.s:68     .text:0000000000000038 _Z12I2C_Read_ACKv
+     /tmp/cckQ8K5q.s:85     .text:000000000000004c _Z13I2C_Read_NACKv
+     /tmp/cckQ8K5q.s:102    .text:0000000000000060 _Z14I2C_Write_Bytehhh
+     /tmp/cckQ8K5q.s:137    .text:000000000000009e _Z15I2C_Write_ArrayhhPhh
+     /tmp/cckQ8K5q.s:191    .text:00000000000000fe _Z13I2C_Read_Bytehh
+     /tmp/cckQ8K5q.s:221    .text:0000000000000136 _Z14I2C_Read_ArrayhhPhh
+
+NO UNDEFINED SYMBOLS
